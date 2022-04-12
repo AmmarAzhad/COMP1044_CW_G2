@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Library Read 2gether</title>
-<!-- INI IALAH INTERNAL CSS -->
+<!-- INTERNAL CSS -->
 <style>
 #main
 {
@@ -38,7 +38,7 @@ include("header.html");
 include("footer.html");
 ?>
 <div id="main">
-<div id="tajuk"><p>LIBRARY Read 2gether <p>Register New Book</div>
+<div id="tajuk"><p>Library Read 2gether <p>Register New Book</div>
 
 <form action="book_add_back.php" method="POST">
 <table cellpadding=5px>

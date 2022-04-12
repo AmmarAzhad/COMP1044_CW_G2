@@ -1,5 +1,5 @@
 <?php
-//Sambungan ke DB
+//Connect to Database
 include ('db_conn.php');
 
 /*Dapatkan data dari semua medan/textfield pada borang_penggunabaru.php*/
