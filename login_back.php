@@ -32,7 +32,7 @@ if (isset($_POST['loginBtn']))
 		$firstname = $row['firstname'];
 		
 		//Output welcome Pop-up 
-		echo '<script>alert("Welcome, '.$firstnama.'!!");
+		echo '<script>alert("Welcome back '.$firstname.'");
 			 window.location.href="main_page.php";</script>';
 			 //redirect to main page
 	}
