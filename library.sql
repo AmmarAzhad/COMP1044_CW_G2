@@ -37,7 +37,6 @@ CREATE TABLE `book` (
   `publisher_name` varchar(255) NOT NULL,
   `isbn` varchar(20) NOT NULL,
   `copyright_year` year(4) NOT NULL,
-  `date_receive` datetime NOT NULL,
   `date_added` datetime NOT NULL,
   `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
