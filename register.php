@@ -1,42 +1,22 @@
 <html>
 <head>
-<!-- INI IALAH INTERNAL CSS -->
+<meta charset="UTF-8">
+<link rel="stylesheet" href="design.css">
 <style>
-#mainbody
-{
-position: absolute;
-top: 130px;
-left: 0px;
-bottom: 15px;
-overflow: auto;
-width: 100%;
-background-color: khaki;
-}
-#tajuk
-{
-font-size: 25px;
-font-family: Tv Cen MT Condensed;
-font-weight: bold;
-text-align: center;
-}
-table{
-border: 2px solid black;
-border-collapse: collapse;
-margin: auto;
-background-color: palegoldenrod;
-}
-table, td {
-text-align: right;
+
+table {
+	font-size: 20px;
 }
 </style>
+
 </head>
+
 <body>
 
-<div id="mainbody">
 <!-- link to register_back -->
 <form action="register_back.php" method="POST">
-<div id="tajuk"><p> Group Read 2gether Library
-<p>Sign Up
+<h1><center>Group Read 2gether Library</center>
+<h2><center>Sign Up</center>
 </div>
 
 <table cellpadding=5px>
@@ -79,7 +59,7 @@ text-align: right;
 <tr>
 <td></td>
 <td></td>
-<td><input type="submit" name="sign_up" value="Sign Up"></td>
+<td><button style="height: 30px; background: #417088; color: #fff; width: 180px; border: 1px solid" name="sign_up" >Sign Up</button></td>
 <td></td>
 </tr>
 <tr>
@@ -103,6 +83,5 @@ text-align: right;
 </table>
 
 </form>
-</div>
 </body>
 </html>

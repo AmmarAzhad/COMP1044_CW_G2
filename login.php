@@ -1,50 +1,31 @@
 <html>
 <head>
-<!-- INTERNAL CSS -->
+<meta charset="UTF-8">
+<link rel="stylesheet" href="design.css">
 <style>
-#mainbody
-{
-position: absolute;
-top: 120px;
-left: 0px;
-bottom: 15px;
-overflow: auto;
-width: 100%;
-background-color: khaki;
-}
-#tajuk
-{
-font-size: 25px;
-font-family: Tv Cen MT Condensed;
-font-weight: bold;
-text-align: center;
-}
-table{
-border: 2px solid black;
-border-collapse: collapse;
-margin: auto;
-background-color: palegoldenrod;
-}
-table, td {
-text-align: right;
+
+table {
+	font-size: 20px;
 }
 </style>
-</head>
-<body>
-<div id="mainbody">
 
+</head>
+
+<body>
 <!-- link to login_back -->
 <form action="login_back.php" method="POST">
-<div id="tajuk"><p> Group Read 2gether Library
-<p>Login
-</div>
+<div style="display: flex;justify-content: center;width: 100%; height: 100vh;align-items: center;">
+<div style="display: flex;flex-flow: column; width: 300px;height: 600px;align-items: center">       
+<img src="web/resource/login-logo.png" style="width: 210px; height: 210px; margin-bottom: 50px"/>
+<h1><center>Library Read 2gether</center>
 
+<div style="width: 500px;">
 <table cellpadding=5px>
 <tr>
-<td style="width: 20px"></td>
+<td style="width: 50px"></td>
 <td></td>
 <td></td>
-<td style="width: 20px"></td>
+<td style="width: 50px"></td>
 </tr>
 <tr>
 <td></td>
@@ -67,7 +48,8 @@ text-align: right;
 <tr>
 <td></td>
 <td></td>
-<td><input type="submit" name="loginBtn" value="Login"></td>
+<td>
+<button style="height: 30px; background: #417088; color: #fff; width: 180px; border: 1px solid" name="loginBtn" >Login</button></td>
 <td></td>
 </tr>
 <tr>
@@ -95,8 +77,8 @@ text-align: right;
 <td></td>
 </tr>
 </table>
+</div>
 
 </form>
-</div>
 </body>
 </html>
