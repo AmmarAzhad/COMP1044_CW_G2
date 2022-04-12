@@ -3,31 +3,28 @@
 <title>Library Read 2gether</title>
 <!-- INTERNAL CSS -->
 <style>
-#main
-{
-position: absolute;
-top: 130px;
-left: 163px;
-bottom: 15px;
-overflow: auto;
-width:88.1%;
-background-color: khaki;
-}
+
 #tajuk
 {
 font-size: 25px;
-font-family: Tv Cen MT Condensed;
 font-weight: bold;
 text-align: center;
 }
+input[type=text]{
+	width: 250px;
+}
+input[type=tel]{
+	width: 250px;
+}
 table{
-border: 2px solid black;
+border: 2px solid #18508C;
 border-collapse: collapse;
 margin: auto;
-background-color: palegoldenrod;
+color: white;
+background-color: #18508C; 
 }
 table, td {
-text-align: right;
+text-align: left;
 }
 </style>
 </text>
@@ -35,9 +32,8 @@ text-align: right;
 <?php
 include("header.html");
 
-include("footer.html");
+//include("footer.html");
 ?>
-<div id="main">
 <div id="tajuk"><p>Library Read 2gether <p>Register New Book</div>
 
 <form action="book_add_back.php" method="POST">
@@ -49,10 +45,7 @@ include("footer.html");
 <td style="width: 20px"></td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td colspan="4"></td>
 </tr>
 <tr>
 <td></td>
@@ -115,28 +108,24 @@ include("footer.html");
 </td>
 </tr>
 <tr>
+<td colspan="4"></td>
+</tr>
+<tr>
+<tr>
 <td></td>
-<td></td>
-<td><input type="submit" name="loginBtn" value="Submit"></td>
+<td colspan="2"><input type="submit" name="loginBtn" value="Submit" class="submitbtn"></td>
 <td></td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td colspan="4"></td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td colspan="4"></td>
 </tr>
 </table>
 
 </form>
-</div>
 <?php
-include("sidemenu.php");
+//include("sidemenu.php");
 ?></body>
 </html>

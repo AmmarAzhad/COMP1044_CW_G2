@@ -1,33 +1,28 @@
 <html>
 <head>
 <title>Library Read 2gether</title>
+<link rel = "stylesheet" href = "stylesheet.css">
 <!-- INTERNAL CSS -->
 <style>
-#main
-{
-position: absolute;
-top: 130px;
-left: 163px;
-bottom: 15px;
-overflow: auto;
-width:88.1%;
-background-color: khaki;
-}
 #tajuk
 {
 font-size: 25px;
-font-family: Tv Cen MT Condensed;
 font-weight: bold;
 text-align: center;
 }
-table{
-border: 2px solid black;
-border-collapse: collapse;
-margin: auto;
-background-color: palegoldenrod;
+th {
+	background-color: #18508C;
+	color: #fff;
 }
-table, td {
-text-align: center;
+td {
+	background-color: #fff;
+}
+table, td,th{
+	padding: 10px 30px;
+	margin: auto;
+	border-collapse: collapse;
+	border: 2px solid black;
+	text-align: center;
 }
 </style>
 </head>
@@ -39,26 +34,24 @@ include ('db_conn.php');
 include ("header.html");
 
 ?>
-<div id="main">
 <div id="tajuk"><p>Library Read 2gether<p>Search Book</div>
-
-<p>
-<form action="" method="post">
-<p><center>
-<select name ="carian">
-<option>All</option>
-<option value="book_id">Book ID</option>
-<option value="book_title">Title</option>
-<option value="author">Author</option>
-<option value="isbn">ISBN</option>
-<option value="date_added">Date Added</option>
-<option value="status">Status</option>
-
-</select>
-<input type="text" name="i_carian">
-<input type="submit" value="Search" name="cari">
-</p><center>
-</form>
+<div class="container center">
+	<form action="" method="post">
+		<p><center>
+		<select name ="carian">
+			<option>All</option>
+			<option value="book_id">Book ID</option>
+			<option value="book_title">Title</option>
+			<option value="author">Author</option>
+			<option value="isbn">ISBN</option>
+			<option value="date_added">Date Added</option>
+			<option value="status">Status</option>
+		</select>
+		<input type="text" name="i_carian">
+		<input type="submit" value="Search" name="cari" class="searchbtn">
+		</p></center>
+	</form>
+</div>
 
 <?php
 //jika user klik butang "Cari" dan textbox carian tidak empty
@@ -105,12 +98,12 @@ $result = mysqli_query($conn, $mysql) or die(mysql_error());
 if (mysqli_num_rows($result) > 0) {
 //table untuk paparan data
 echo "<table border='1'>";
-echo "<col width='70'>"; //saiz column 1
-echo "<col width='150'>"; //saiz column 2
-echo "<col width='110'>"; //saiz column 4
-echo "<col width='120'>"; //saiz column 5
-echo "<col width='150'>"; //saiz column 6
-echo "<col width='90'>"; //saiz column 7
+echo "<col width='100'>"; //saiz column 1
+echo "<col width='210'>"; //saiz column 2
+echo "<col width='170'>"; //saiz column 4
+echo "<col width='180'>"; //saiz column 5
+echo "<col width='210'>"; //saiz column 6
+echo "<col width='150'>"; //saiz column 7
 echo "<tr>";
 echo "<th>Book ID</th>";
 echo "<th>Title</th>";
@@ -135,10 +128,90 @@ echo "</table>";
 }
 else { echo "<center>No Records</center>";}
 ?>
-</div>
 <?php
-include ("footer.html");
-include ("sidemenu.php");
+//include ("footer.html");
+//include ("sidemenu.php");
 ?>
+
+<script>
+var x, i, j, l, ll, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("custom-select");
+l = x.length;
+for (i = 0; i < l; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var y, i, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < sl; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            for (k = 0; k < yl; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
+</script>
 </body>
 </html>
