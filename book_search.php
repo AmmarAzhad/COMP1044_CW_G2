@@ -1,28 +1,33 @@
 <html>
 <head>
 <title>Library Read 2gether</title>
-<link rel = "stylesheet" href = "stylesheet.css">
 <!-- INTERNAL CSS -->
 <style>
+#main
+{
+position: absolute;
+top: 130px;
+left: 163px;
+bottom: 15px;
+overflow: auto;
+width:88.1%;
+background-color: khaki;
+}
 #tajuk
 {
 font-size: 25px;
+font-family: Tv Cen MT Condensed;
 font-weight: bold;
 text-align: center;
 }
-th {
-	background-color: #18508C;
-	color: #fff;
+table{
+border: 2px solid black;
+border-collapse: collapse;
+margin: auto;
+background-color: palegoldenrod;
 }
-td {
-	background-color: #fff;
-}
-table, td,th{
-	padding: 10px 30px;
-	margin: auto;
-	border-collapse: collapse;
-	border: 2px solid black;
-	text-align: center;
+table, td {
+text-align: center;
 }
 </style>
 </head>
@@ -34,24 +39,26 @@ include ('db_conn.php');
 include ("header.html");
 
 ?>
+<div id="main">
 <div id="tajuk"><p>Library Read 2gether<p>Search Book</div>
-<div class="container center">
-	<form action="" method="post">
-		<p><center>
-		<select name ="carian">
-			<option>All</option>
-			<option value="book_id">Book ID</option>
-			<option value="book_title">Title</option>
-			<option value="author">Author</option>
-			<option value="isbn">ISBN</option>
-			<option value="date_added">Date Added</option>
-			<option value="status">Status</option>
-		</select>
-		<input type="text" name="i_carian">
-		<input type="submit" value="Search" name="cari" class="searchbtn">
-		</p></center>
-	</form>
-</div>
+
+<p>
+<form action="" method="post">
+<p><center>
+<select name ="carian">
+<option>All</option>
+<option value="book_id">Book ID</option>
+<option value="book_title">Title</option>
+<option value="author">Author</option>
+<option value="isbn">ISBN</option>
+<option value="date_added">Date Added</option>
+<option value="status">Status</option>
+
+</select>
+<input type="text" name="i_carian">
+<input type="submit" value="Search" name="cari">
+</p><center>
+</form>
 
 <?php
 //jika user klik butang "Cari" dan textbox carian tidak empty
@@ -98,12 +105,12 @@ $result = mysqli_query($conn, $mysql) or die(mysql_error());
 if (mysqli_num_rows($result) > 0) {
 //table untuk paparan data
 echo "<table border='1'>";
-echo "<col width='100'>"; //saiz column 1
-echo "<col width='210'>"; //saiz column 2
-echo "<col width='170'>"; //saiz column 4
-echo "<col width='180'>"; //saiz column 5
-echo "<col width='210'>"; //saiz column 6
-echo "<col width='150'>"; //saiz column 7
+echo "<col width='70'>"; //saiz column 1
+echo "<col width='150'>"; //saiz column 2
+echo "<col width='110'>"; //saiz column 4
+echo "<col width='120'>"; //saiz column 5
+echo "<col width='150'>"; //saiz column 6
+echo "<col width='90'>"; //saiz column 7
 echo "<tr>";
 echo "<th>Book ID</th>";
 echo "<th>Title</th>";
@@ -128,9 +135,10 @@ echo "</table>";
 }
 else { echo "<center>No Records</center>";}
 ?>
+</div>
 <?php
-//include ("footer.html");
-//include ("sidemenu.php");
+include ("footer.html");
+include ("sidemenu.php");
 ?>
 </body>
 </html>

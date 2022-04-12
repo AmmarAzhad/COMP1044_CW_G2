@@ -3,25 +3,31 @@
 <title>Library Read 2gether</title>
 <!-- INTERNAL CSS -->
 <style>
+#main
+{
+position: absolute;
+top: 130px;
+left: 163px;
+bottom: 15px;
+overflow: auto;
+width:88.1%;
+background-color: khaki;
+}
 #tajuk
 {
 font-size: 25px;
+font-family: Tv Cen MT Condensed;
 font-weight: bold;
 text-align: center;
 }
-th {
-	background-color: #18508C;
-	color: #fff;
+table{
+border: 2px solid black;
+border-collapse: collapse;
+margin: auto;
+background-color: palegoldenrod;
 }
-td {
-	background-color: #fff;
-}
-table, td,th{
-	padding: 10px 30px;
-	margin: auto;
-	border-collapse: collapse;
-	border: 2px solid black;
-	text-align: center;
+table, td {
+text-align: center;
 }
 </style>
 </head>
@@ -33,6 +39,7 @@ include ('db_conn.php');
 include ("header.html");
 
 ?>
+<div id="main">
 <div id="tajuk"><p>Library Read 2gether<p>Search Book</div>
 
 <p>
@@ -48,7 +55,7 @@ include ("header.html");
 
 </select>
 <input type="text" name="i_carian">
-<input type="submit" value="Search" name="cari" class="searchbtn">
+<input type="submit" value="Search" name="cari">
 </p><center>
 </form>
 
@@ -129,9 +136,10 @@ echo "</table>";
 }
 else { echo "<center>No Records</center>";}
 ?>
+</div>
 <?php
-//include ("footer.html");
-//include ("sidemenu.php");
+include ("footer.html");
+include ("sidemenu.php");
 ?>
 </body>
 </html>
