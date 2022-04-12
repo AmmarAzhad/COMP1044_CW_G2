@@ -1,64 +1,48 @@
 <html>
 <head>
-<title>Library Read 2gether</title>
-<!-- INTERNAL CSS -->
+<link rel="stylesheet" href="design.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>LIBRARY Read 2gether</title>
 <style>
-
-#tajuk
-{
-font-size: 25px;
-font-weight: bold;
-text-align: center;
-}
-input[type=text]{
-	width: 250px;
-}
-input[type=tel]{
-	width: 250px;
-}
-table{
-border: 2px solid #18508C;
-border-collapse: collapse;
-margin: auto;
-color: white;
-background-color: #18508C; 
-}
-table, td {
-text-align: left;
+table {
+	border: none;
+	font-family: Tw Cen MT;
+	font-size: 20px;
 }
 </style>
-</text>
-<body>
-<?php
-include("header.html");
 
-//include("footer.html");
-?>
-<div id="tajuk"><p>Library Read 2gether <p>Register New Book</div>
+<body>
 
 <form action="book_add_back.php" method="POST">
-<table cellpadding=5px>
+
+<div class="content-container-box">
+<div style="display: flex">
+<div style="width: 500px;">
+<div class="book-contents" style="border: 1px #000 solid; border-radius: 20px;  padding: 30px">
+
+<table cellpadding=6px>
 <tr>
-<td style="width: 20px"></td>
 <td></td>
 <td></td>
-<td style="width: 20px"></td>
+<td style="width: 30px"></td>
 </tr>
-<tr>
-<td colspan="4"></td>
-</tr>
+
 <tr>
 <td></td>
 <td> Book Title:</td>
-<td><input type="text" placeholder="Fantastic Pets" name="i_booktitle" required></td>
+<div class="search">
+<td><input class = "input" type="text" placeholder="Fantastic Pets" name="i_booktitle" required></td>
+</div>
 <td></td>
 </tr>
+
 <tr>
 <td></td>
 <td>Author :</td>
 <td><input type="text" name="i_author" required></td>
 <td></td>
 </tr>
+
 <tr>
 <td></td>
 <td>Book Copies :</td>
@@ -108,24 +92,20 @@ include("header.html");
 </td>
 </tr>
 <tr>
-<td colspan="4"></td>
-</tr>
-<tr>
-<tr>
 <td></td>
-<td colspan="2"><input type="submit" name="loginBtn" value="Submit" class="submitbtn"></td>
+<td></td>
+<td><input type="submit" name="loginBtn" value="Submit"></td>
 <td></td>
 </tr>
-<tr>
-<td colspan="4"></td>
-</tr>
-<tr>
-<td colspan="4"></td>
-</tr>
+
 </table>
 
+</div>
+</div>
+</div>
+</div>
+
 </form>
-<?php
-//include("sidemenu.php");
-?></body>
+</div>
+</body>
 </html>
