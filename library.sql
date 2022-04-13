@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2022 at 03:28 PM
+-- Generation Time: Apr 13, 2022 at 08:16 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `library`
+-- Database: `library22`
 --
 
 -- --------------------------------------------------------
@@ -33,10 +33,10 @@ CREATE TABLE `book` (
   `category_id` int(2) NOT NULL,
   `author` varchar(255) NOT NULL,
   `book_copies` int(5) NOT NULL,
-  `book_pub` varchar(255) NOT NULL,
-  `publisher_name` varchar(255) NOT NULL,
+  `book_pub` varchar(255) DEFAULT NULL,
+  `publisher_name` varchar(255) DEFAULT NULL,
   `isbn` varchar(20) NOT NULL,
-  `copyright_year` year(4) NOT NULL,
+  `copyright_year` year(4) DEFAULT NULL,
   `date_added` datetime NOT NULL,
   `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -51,7 +51,7 @@ INSERT INTO `book` (`book_id`, `book_title`, `category_id`, `author`, `book_copi
 (17, 'Algebra 1', 3, 'Carolyn Bradshaw, Michael Seals', 35, 'Pearson Education, Inc', 'Prentice Hall, New Jersey', '0-13-125087-6', 2004, '2013-12-11 06:39:17', 'Damage'),
 (18, 'The Philippine Daily Inquirer', 7, '..', 3, 'Pasay City', '..', '..', 2013, '2013-12-11 06:41:53', 'New'),
 (19, 'Science in our World', 4, 'Brian Knapp', 25, 'Regency Publishing Group', 'Prentice Hall, Inc', '0-13-050841-1', 1996, '2013-12-11 06:44:44', 'Lost'),
-(20, 'Literature', 9, 'Greg Glowka', 20, 'Regency Publishing Group', 'Prentice Hall, Inc', '0-13-050841-1', 2001, '2013-12-11 06:47:44', 'Old'),
+(20, 'Literature', 9, 'Greg Glowka', 20, 'Regency Publishing Group', 'Prentice Hall, Inc', '0-13-050841-2', 2001, '2013-12-11 06:47:44', 'Old'),
 (21, 'Lexicon Universal Encyclopedia', 5, 'Lexicon', 10, 'Lexicon Publication', 'Pulication Inc., Lexicon', '0-7172-2043-5', 1993, '2013-12-11 06:49:53', 'Old'),
 (22, 'Science and Invention Encyclopedia', 5, 'Clarke Donald, Dartford Mark', 16, 'H.S. Stuttman inc. Publishing', 'Publisher , Westport Connecticut', '0-87475-450-x', 1992, '2013-12-11 06:52:58', 'New'),
 (23, 'Integrated Science Textbook ', 4, 'Merde C. Tan', 15, 'Vibal Publishing House Inc.', '12536. Araneta Avenue Corner Ma. Clara St., Quezon City', '971-570-124-8', 2009, '2013-12-11 06:55:27', 'New'),
@@ -147,10 +147,10 @@ CREATE TABLE `member` (
   `firstname` varchar(20) NOT NULL,
   `lastname` varchar(20) NOT NULL,
   `gender` varchar(10) NOT NULL,
-  `address` varchar(20) NOT NULL,
-  `contact` int(10) NOT NULL,
+  `address` varchar(20) DEFAULT NULL,
+  `contact` int(10) DEFAULT NULL,
   `type_id` varchar(20) NOT NULL,
-  `year_level` varchar(20) NOT NULL,
+  `year_level` varchar(20) DEFAULT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -225,6 +225,7 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `firstname`, `lastname`)
 --
 ALTER TABLE `book`
   ADD PRIMARY KEY (`book_id`),
+  ADD UNIQUE KEY `isbn` (`isbn`),
   ADD KEY `category_id` (`category_id`) USING BTREE;
 
 --
@@ -238,6 +239,7 @@ ALTER TABLE `borrow`
 -- Indexes for table `borrowdetails`
 --
 ALTER TABLE `borrowdetails`
+  ADD PRIMARY KEY (`borrow_details_id`),
   ADD KEY `book_id` (`book_id`),
   ADD KEY `borrow_id` (`borrow_id`);
 
@@ -265,6 +267,46 @@ ALTER TABLE `type`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `borrow`
+--
+ALTER TABLE `borrow`
+  MODIFY `borrow_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=485;
+
+--
+-- AUTO_INCREMENT for table `borrowdetails`
+--
+ALTER TABLE `borrowdetails`
+  MODIFY `borrow_details_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `category_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `member`
+--
+ALTER TABLE `member`
+  MODIFY `member_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+
+--
+-- AUTO_INCREMENT for table `type`
+--
+ALTER TABLE `type`
+  MODIFY `type_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
