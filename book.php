@@ -157,9 +157,7 @@ else { echo "<center>No Records</center>";}
 <tr>
 <td></td>
 <td> Book Title:</td>
-<div class="search">
 <td><input class = "input" type="text" placeholder="Fantastic Pets" name="i_booktitle" required></td>
-</div>
 <td></td>
 </tr>
 
@@ -177,6 +175,22 @@ else { echo "<center>No Records</center>";}
 <td></td>
 </tr>
 <tr>
+<tr>
+<td></td>
+<td>Category :</td>
+<td><select name = "i_categoryid">
+	<option>Select</option>
+	<option value = "1">Periodical</option>
+	<option value = "2">English</option>
+	<option value = "3">Math</option>
+	<option value = "4">Science</option>
+	<option value = "5">Encyclopedia</option>
+	<option value = "6">Filipiniana</option>
+	<option value = "7">Newspapaer</option>
+	<option value = "8">General</option>
+	<option value = "9">Reference</option>
+</td>
+</tr>
 <tr>
 <td></td>
 <td>Book Publisher Company :</td>
@@ -211,6 +225,7 @@ else { echo "<center>No Records</center>";}
 <td></td>
 <td>Status :</td>
 <td><select name = "i_status">
+	<option>Select</option>
 	<option value = "New">New</option>
 	<option value = "Old">Old</option>
 	<option value = "Damaged">Damaged</option>
