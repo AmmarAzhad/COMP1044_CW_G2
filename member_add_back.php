@@ -20,7 +20,7 @@ if (mysqli_query($conn, $mysql)) {
 	//show javascript alert
 	echo '<script type="text/javascript">;
 	alert("Member Registered Successfully!");
-		 window.location.href="member_add.php";</script>';
+		 window.location.href="member.php";</script>';
 		 //After successfully add data into database, immediatly redirect to member page page
 		 
 } 
