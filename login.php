@@ -16,7 +16,7 @@ table {
 <form action="login_back.php" method="POST">
 <div style="display: flex;justify-content: center;width: 100%; height: 100vh;align-items: center;">
 <div style="display: flex;flex-flow: column; width: 300px;height: 600px;align-items: center">       
-<img src="web/resource/login-logo.png" style="width: 210px; height: 210px; margin-bottom: 50px"/>
+<img src="images/login-logo.png" style="width: 210px; height: 210px; margin-bottom: 13px"/>
 <h1><center>Library Read 2gether</center>
 
 <div style="width: 500px;">
