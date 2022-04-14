@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="design.css">
@@ -44,7 +45,11 @@ table {
 //Connect to database
 include ('db_conn.php');
 
+//include('header.html');
 ?>
+
+
+
 <div class="row">
 
 <p><center>
