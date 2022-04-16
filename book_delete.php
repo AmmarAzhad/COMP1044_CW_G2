@@ -59,6 +59,7 @@ include ("header.html");
 		Book ID:
 		<input type="text" name="i_delete">
 		<input type="submit" value="Delete" name="delete" class="searchbtn">
+		<input type="submit" value="Update" name="update" class="searchbtn" formmethod="POST" formaction="book_update.php">
 		</p></center>
 	</form>
 </div>

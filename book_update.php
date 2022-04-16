@@ -1,22 +1,53 @@
 <html>
 <head>
-<link rel="stylesheet" href="design.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel = "stylesheet" href = "stylesheet.css">
 <title>LIBRARY Read 2gether</title>
 <style>
+.button {
+  background-color: #18508C;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 40px ;
+  cursor: pointer;
+}
+#title
+{
+font-size: 25px;
+font-family: Tv Cen MT Condensed;
+font-weight: bold;
+text-align: center;
+}
+
 table {
 	border: none;
+	margin: auto;
 	font-family: Tw Cen MT;
 	font-size: 20px;
 }
 </style>
-
+</head>
 <body>
+<?php
+//Connect to database
+include ('db_conn.php');
 
-<form action="book_add_back.php" method="POST">
+include ("header.html");
 
-<div class="content-container-box">
+?>
+
+<!--<form action="book_add_back.php" method="POST">-->
+
+
+<div id="title"><p>Library Read 2gether<p>Update Book Details</div>
+
+<div class="container center">
 <div style="display: flex">
+<div style="margin-left: 400px;">
 <div style="width: 500px;">
 <div class="book-contents" style="border: 1px #000 solid; border-radius: 20px;  padding: 30px">
 
@@ -102,7 +133,7 @@ table {
 <tr>
 <td></td>
 <td></td>
-<td><input type="submit" name="loginBtn" value="Modify"></td>
+<td><input type="button" class="button" value="Modify"></td>
 <td></td>
 </tr>
 
