@@ -118,6 +118,7 @@ echo "<th>Author</th>";
 echo "<th>ISBN</th>";
 echo "<th>Date Added</th>";
 echo "<th>Status</th>";
+echo "<th>Action</th>";
 echo "</tr>";
 
 //papar semua data dari jadual dalam DB
@@ -135,6 +136,7 @@ echo "</table>";
 }
 else { echo "<center>No Records</center>";}
 ?>
+
 </div>
 <?php
 include ("footer.html");

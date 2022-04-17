@@ -134,6 +134,7 @@ echo "<th>Author</th>";
 echo "<th>ISBN</th>";
 echo "<th>Date Added</th>";
 echo "<th>Status</th>";
+echo "<th>Actions</th>";
 echo "</tr>";
 
 while($row = mysqli_fetch_assoc($result)) {
@@ -144,6 +145,7 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<td>".$row['isbn']."</td>";
 	echo "<td>".$row['date_added']."</td>";
 	echo "<td>".$row['status']."</td>";
+	echo "<td>"<input type="submit" value="Update" name="update" class="searchbtn" formmethod="POST" formaction="book_update.php">"</td>";
 	echo "</tr>";
 }
 echo "</table>";
