@@ -59,7 +59,7 @@ include ("header.html");
 		Book ID:
 		<input type="text" name="i_delete">
 		<input type="submit" value="Delete" name="delete" class="searchbtn">
-		<input type="submit" value="Update" name="update" class="searchbtn" formmethod="POST" formaction="book_update.php">
+		<!--<input type="submit" value="Update" name="update" class="searchbtn" formmethod="POST" formaction="book_update.php">-->
 		</p></center>
 	</form>
 </div>
@@ -78,6 +78,8 @@ if (isset($_POST['delete']) && !empty($_POST['i_delete']))
 }
 
 ?>
+
+
 
 <?php
 //jika user klik butang "Cari" dan textbox carian tidak empty
@@ -134,7 +136,7 @@ echo "<th>Author</th>";
 echo "<th>ISBN</th>";
 echo "<th>Date Added</th>";
 echo "<th>Status</th>";
-echo "<th>Actions</th>";
+echo "<th>Action</th>";
 echo "</tr>";
 
 while($row = mysqli_fetch_assoc($result)) {
@@ -145,7 +147,7 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<td>".$row['isbn']."</td>";
 	echo "<td>".$row['date_added']."</td>";
 	echo "<td>".$row['status']."</td>";
-	echo "<td>"<input type="submit" value="Update" name="update" class="searchbtn" formmethod="POST" formaction="book_update.php">"</td>";
+	echo "<td><button><a href='book_update.php'>Update</a></button></td>";
 	echo "</tr>";
 }
 echo "</table>";
