@@ -126,6 +126,7 @@ echo "<th>Last Name</th>";
 echo "<th>Gender</th>";
 echo "<th>Address</th>";
 echo "<th>Contact</th>";
+echo "<th>Type ID</th>";
 echo "<th>Year Level</th>";
 echo "<th>Status</th>";
 echo "<th>Action</th>";
@@ -140,10 +141,11 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<td>".$row['gender']."</td>";
 	echo "<td>".$row['address']."</td>";
 	echo "<td>".$row['contact']."</td>";
+	echo "<td>".$row['type_id']."</td>";
 	echo "<td>".$row['year_level']."</td>";
 	echo "<td>".$row['status']."</td>";
 	echo "<td><button><a href='member_delete.php? deleteid=".$row['member_id']."'>Delete</a></button>";
-	echo "<button><a href='member_update.php' updateteid=".$row['member_id'].">Update</a></button></td>";
+	echo "<button><a href='member_update.php? updateid=".$row['member_id']."'>Update</a></button></td>";
 	echo "</tr>";
 }
 echo "</table>";

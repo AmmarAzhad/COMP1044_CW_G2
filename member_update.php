@@ -52,9 +52,56 @@ table {
 //Connect to database
 include ('db_conn.php');
 include ("header.html");
-?>
-<div id="title"><p>Library Read 2gether<p>Update Member Details</div>
 
+if(isset($_POST['update'])){
+  $id = $_GET['updateid'];
+$firstname =$_POST['i_firstname'];
+$lastname =$_POST['i_lastname'];
+$gender =$_POST['i_gender'];
+$address =$_POST['i_address'];
+$contact =$_POST['i_contact'];
+$type_id =$_POST['i_typeid'];
+$year_level =$_POST['i_yearlevel'];
+$status =$_POST['i_status'];
+
+
+$mysql = "UPDATE member SET firstname='$firstname', lastname='$lastname', gender='$gender', address='$address', contact='$contact', type_id='$type_id', year_level='$year_level', status='$status' WHERE member_id= $id";
+if (mysqli_query($conn, $mysql)) {
+  //papar javascript alert jika pengguna baru berjaya daftar
+  echo '<script type="text/javascript">;
+  alert("Updated Successfully!");
+     window.location.href="member.php";</script>';
+     //selepas berjaya daftar, kembali ke login page
+     
+} 
+else {
+  echo "Error ; " . mysqli_error($conn);
+}
+}
+?>
+
+<?php
+if (isset($_GET['updateid'])){
+  $id = $_GET['updateid'];
+  $query = "SELECT * FROM member WHERE member_id = $id";
+  $mysql = $query;
+  $result = mysqli_query($conn, $mysql) or die(mysql_error());
+  $row = mysqli_fetch_assoc($result);
+  $firstname= $row['firstname'];
+  $lastname = $row['lastname'];
+  $gender = $row['gender'];
+  $address = $row['address'];
+  $contact = $row['contact'];
+  $type_id = $row['type_id'];
+  $year_level = $row['year_level'];
+  $status = $row['status'];
+}
+
+?>
+
+
+<div id="title"><p>Library Read 2gether<p>Update Member Details</div>
+<form method="POST">
 <div class="container center">
 <div style="display: flex">
 <div style="margin-left: 400px;">
@@ -73,7 +120,7 @@ include ("header.html");
 <td></td>
 <td> First Name :</td>
 <div class="search">
-<td><input type="text"></td>
+<td><input class="input" type="text" name="i_firstname" required value="<?php echo $firstname?>"></td>
 </div>
 <td></td>
 </tr>
@@ -81,14 +128,14 @@ include ("header.html");
 <tr>
 <td></td>
 <td>Last Name :</td>
-<td><input type="text"></td>
+<td><input type="text" name="i_lastname" required value="<?php echo $lastname?>"></td>
 <td></td>
 </tr>
 
 <tr>
 <td></td>
 <td>Gender :</td>
-<td><input type="text" ></td>
+<td><input type="text" name="i_gender" required value="<?php echo $gender?>"></td>
 <td></td>
 </tr>
 
@@ -96,7 +143,7 @@ include ("header.html");
 <td></td>
 <td> Address :</td>
 <div class="search">
-<td><input type="text"></td>
+<td><input type="text" name="i_address" required value="<?php echo $address?>"></td>
 </div>
 <td></td>
 </tr>
@@ -104,19 +151,29 @@ include ("header.html");
 <tr>
 <td></td>
 <td>Contact :</td>
-<td><input type="text" ></td>
+<td><input type="text" name="i_contact" required value="<?php echo $contact?>"></td>
 <td></td>
 </tr>
+
+<tr>
+<td></td>
+<td> Type ID :</td>
+<div class="search">
+<td><input type="text" name="i_typeid" required value="<?php echo $type_id?>"></td>
+</div>
+<td></td>
+</tr>
+
 <tr>
 <td></td>
 <td>Year Level :</td>
-<td><input type="text" ></td>
+<td><input type="text" name="i_yearlevel" required value="<?php echo $year_level?>"></td>
 <td></td>
 </tr>
 <tr>
 <td></td>
 <td>Status :</td>
-<td><input type="text" ></td>
+<td><input type="text" name="i_status" required value="<?php echo $status?>"></td>
 <td></td>
 </tr>
 
@@ -124,11 +181,11 @@ include ("header.html");
 <tr>
 <td></td>
 <td></td>
-<td><input type="submit" value="Update" name="update" class="button1" form method="POST" form action="book_delete.php"></td>
-<td><button class="button2"><a href="book_delete.php" style="color:white">Cancel</a></button></td>
+<td><input type="submit" value="Update" name="update" class="button1" updateid="$id"></td>
+<td><button class="button2"><a href="member.php" style="color:white">Cancel</a></button></td>
 <td></td>
 </tr>
-
+</form>
 </table>
 
 </div>
