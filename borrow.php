@@ -1,12 +1,13 @@
 <html>
 <head>
-<link rel="stylesheet" href="design.css">
+<link rel="stylesheet" href="stylesheet.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Library Read 2gether</title>
 <!-- INTERNAL CSS -->
 <style>
 table {
-	
+	border-collapse: collapse;
+	margin: auto;
 	font-family: Tw Cen MT;
 	font-size: 19px;
 }
@@ -17,6 +18,7 @@ table {
 <?php
 //Connect to database
 include ('db_conn.php');
+include ('header.html');
 ?>
 
 <form action="" method="post">
@@ -26,7 +28,7 @@ include ('db_conn.php');
 <option value="book_id">Book ID</option>
 <option value="book_title">Title</option>
 <option value="author">Author</option>
-<option value="availability">availability</option>
+<option value="borrow_status">Borrow Status</option>
 
 
 </select>
@@ -54,7 +56,7 @@ case "author": //jika user pilih search by kelas
 $query = "SELECT * FROM book
 WHERE author LIKE '$_POST[i_carian]'";
 break;
-case "availability": //jika user pilih search by kodAJK
+case "borrow_status": //jika user pilih search by kodAJK
 $query = "SELECT * FROM book, borrowdetails, borrow
 WHERE borrow_status = '$_POST[i_carian]'";
 break;

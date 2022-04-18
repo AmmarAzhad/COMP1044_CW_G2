@@ -1,12 +1,13 @@
 <html>
 <head>
-<link rel="stylesheet" href="design.css">
+<link rel="stylesheet" href="stylesheet.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Library Read 2gether</title>
 <!-- INTERNAL CSS -->
 <style>
 table {
-	
+	border: 2px solid black;
+	border-collapse: collapse;
 	font-family: Tw Cen MT;
 	font-size: 19px;
 }
@@ -43,6 +44,8 @@ table {
 <?php
 //Connect to database
 include ('db_conn.php');
+
+include('header.html');
 ?>
 <div class="row">
 <div class="column left">
@@ -140,6 +143,7 @@ else { echo "<center>No Records</center>";}
 ?>
 </div>
 <div class="column middle" >
+<h3><center>Register New Book</center></h3>
 <form action="book_add_back.php" method="POST">
 
 <div class="content-container-box">

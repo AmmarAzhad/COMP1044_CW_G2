@@ -55,8 +55,8 @@ include ("header.html");
 
 
 if(isset($_POST['update'])){
-  $id = $_GET['updateid'];
 $book_title=$_POST['i_booktitle'];
+$category_id =$_POST['i_categoryid'];
 $author =$_POST['i_author'];
 $book_copies =$_POST['i_bookcopies'];
 $book_pub =$_POST['i_bookpub'];
@@ -67,45 +67,28 @@ $date_added =$_POST['i_dateadded'];
 $status =$_POST['i_status'];
 
 //Simpan data dalam DB
-$mysql = "UPDATE book SET book_title='$book_title', author='$author', book_copies='$book_copies', book_pub='$book_pub', isbn='$isbn', copyright_year='$copyright_year', date_added='$date_added' , status='$status' WHERE book_id = $id";
+$mysql = "UPDATE `book` SET i_booktitle='$book_title', i_categoryid='$category_id', i_author='$author', i_bookcopies='$book_copies', i_bookpub='$book_pub', i_pubname='$publisher_name', i_isbn='$isbn', i_copyrightyear='$copyright_year', i_dateadded='$date_added' , i_status='$status'";
 if (mysqli_query($conn, $mysql)) {
-  //papar javascript alert jika pengguna baru berjaya daftar
-  echo '<script type="text/javascript">;
-  alert("Updated Successfully!");
-     window.location.href="book_delete.php";</script>';
-     //selepas berjaya daftar, kembali ke login page
-     
+	//papar javascript alert jika pengguna baru berjaya daftar
+	echo '<script type="text/javascript">;
+	alert("Updated Successfully!");
+		 window.location.href="book_delete.php";</script>';
+		 //selepas berjaya daftar, kembali ke login page
+		 
 } 
 else {
-  echo "Error ; " . mysqli_error($conn);
+	echo "Error ; " . mysqli_error($conn);
 }
 }
 ?>
 
-<?php
-if (isset($_GET['updateid'])){
-  $id = $_GET['updateid'];
-  $query = "SELECT * FROM book WHERE book_id = $id";
-  $mysql = $query;
-  $result = mysqli_query($conn, $mysql) or die(mysql_error());
-  $row = mysqli_fetch_assoc($result);
-  $book_title = $row['book_title'];
-  $author = $row['author'];
-  $book_copies = $row['book_copies'];
-  $book_pub = $row['book_pub'];
-  $publisher_name = $row['publisher_name'];
-  $isbn = $row['isbn'];
-  $copyright_year = $row['copyright_year'];
-  $date = $row['date_added'];
-}
-
-
-
 ?>
+
+
+
+
 
 <div id="title"><p>Library Read 2gether<p>Update Book Details</div>
-
-<form method="POST">
 
 <div class="container center">
 <div style="display: flex">
@@ -121,11 +104,12 @@ if (isset($_GET['updateid'])){
 </tr>
 
 
+
 <tr>
 <td></td>
 <td> Book Title:</td>
 <div class="search">
-<td><input class = "input" type="text" placeholder="Fantastic Pets" name="i_booktitle" required value="<?php echo $book_title?>"></td>
+<td><input class = "input" type="text" placeholder="Fantastic Pets" name="i_booktitle" required></td>
 </div>
 <td></td>
 </tr>
@@ -133,45 +117,45 @@ if (isset($_GET['updateid'])){
 <tr>
 <td></td>
 <td>Author :</td>
-<td><input type="text" name="i_author" required value="<?php echo $author?>"></td>
+<td><input type="text" name="i_author" required></td>
 <td></td>
 </tr>
 
 <tr>
 <td></td>
 <td>Book Copies :</td>
-<td><input type="text" name="i_bookcopies" required value="<?php echo $book_copies?>"></td>
+<td><input type="text" name="i_bookcopies" required></td>
 <td></td>
 </tr>
 <tr>
 <tr>
 <td></td>
 <td>Book Publisher Company :</td>
-<td><input type="text" placeholder="Regency Publishing Group" name="i_bookpub" required value="<?php echo $book_pub?>"></td>
+<td><input type="text" placeholder="Regency Publishing Group" name="i_bookpub" required></td>
 <td></td>
 </tr>
 <tr>
 <td></td>
 <td>Publisher Name :</td>
-<td><input type="text" placeholder="0174371312" name="i_pubname" required value="<?php echo $publisher_name?>"></td>
+<td><input type="text" placeholder="0174371312" name="'i_pubname" required></td>
 <td></td>
 </tr>
 <tr>
 <td></td>
 <td>ISBN :</td>
-<td><input type="text" placeholder="0-12-345678-9" name="i_isbn" required value="<?php echo $isbn?>"></td>
+<td><input type="text" placeholder="0-12-345678-9" name="i_isbn" required></td>
 <td></td>
 </tr>
 <tr>
 <td></td>
 <td>Copyright Year :</td>
-<td><input type="text" name="i_copyrightyear" required value="<?php echo $copyright_year?>"></td>
+<td><input type="text" name="i_copyrightyear" required></td>
 <td></td>
 </tr>
 <tr>
 <td></td>
 <td>Date Added :</td>
-<td><input type="datetime-local" placeholder="0174371312" name="i_dateadded" required value="<?php echo $date?>"></td>
+<td><input type="date" placeholder="0174371312" name="i_dateadded" required></td>
 <td></td>
 </tr>
 <tr>
@@ -188,7 +172,7 @@ if (isset($_GET['updateid'])){
 <tr>
 <td></td>
 <td></td>
-<td><input type="submit" value="Update" name="update" class="button1" updateid="$id"></td>
+<td><input type="submit" value="Update" name="update" class="button1" formmethod="POST" formaction="book_delete.php"></td>
 <td><button class="button2"><a href="book_delete.php" style="color:white">Cancel</a></button></td>
 <td></td>
 </tr>
@@ -199,6 +183,7 @@ if (isset($_GET['updateid'])){
 </div>
 </div>
 </div>
+
 </form>
 </div>
 </body>

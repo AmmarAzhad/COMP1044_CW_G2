@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="design.css">
+<link rel="stylesheet" href="stylesheet.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Library Read 2gether</title>
 <!-- INTERNAL CSS -->
 <style>
+button{
+	height: 30px; 
+	background: #417088; 
+	color: white; 
+	width: 70px; 
+	border: 1px solid;
+}
+
+.button2 {background-color: #008CBA;}
+.button3 {background-color: #f44336;}
+
 table {
-	
+	border: 2px solid black;
+	border-collapse: collapse;
 	font-family: Tw Cen MT;
 	font-size: 19px;
 }
@@ -45,13 +57,13 @@ table {
 //Connect to database
 include ('db_conn.php');
 
-//include('header.html');
+include('header.html');
 ?>
 
 
 
 <div class="row">
-
+<div class="column left" >
 <p><center>
 <form action="" method="post">
 <p><center>
@@ -65,7 +77,7 @@ include ('db_conn.php');
 
 </select>
 <input type="text" name="i_carian">
-<button style="height: 30px; background: #417088; color: #fff; width: 70px; border: 1px solid" name="cari">Submit</button>
+<button name="cari">Submit</button>
 </p><center>
 </form>
 
@@ -117,8 +129,11 @@ echo "<col width='110'>"; //saiz column 4
 echo "<col width='120'>"; //saiz column 5
 echo "<col width='150'>";
 echo "<col width='150'>";
-echo "<col width='100'>"; //saiz column 6
-echo "<col width='90'>"; //saiz column 7
+echo "<col width='70'>"; //saiz column 6
+echo "<col width='90'>"; 
+echo "<col width='90'>";//saiz column 7
+echo "<col width='50'>"; 
+echo "<col width='50'>";
 echo "<tr style='height: 50px; background: #ddd;'>";
 echo "<th>Member ID</th>";
 echo "<th>First Name</th>";
@@ -129,7 +144,8 @@ echo "<th>Contact</th>";
 echo "<th>Type ID</th>";
 echo "<th>Year Level</th>";
 echo "<th>Status</th>";
-echo "<th>Action</th>";
+echo "<th>Edit</th>";
+echo "<th>Delete</th>";
 echo "</tr>";
 
 //papar semua data dari jadual dalam DB
@@ -144,8 +160,8 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<td>".$row['type_id']."</td>";
 	echo "<td>".$row['year_level']."</td>";
 	echo "<td>".$row['status']."</td>";
-	echo "<td><button><a href='member_delete.php? deleteid=".$row['member_id']."'>Delete</a></button>";
-	echo "<button><a href='member_update.php? updateid=".$row['member_id']."'>Update</a></button></td>";
+	echo "<td><a href='member_update.php? updateid=".$row['member_id']."'><img src='images/edit.png' width=30 height=30></a></td>";
+	echo "<td><center><a href='member_delete.php? deleteid=".$row['member_id']."'><img src='images/delete.png' width=26 height=30></a></center></td>";
 	echo "</tr>";
 }
 echo "</table>";
@@ -154,9 +170,8 @@ else { echo "<center>No Records</center>";}
 ?>
 </div>
 
-</div>
-
 <div class="column middle" >
+<h3><center>Register New Member</center></h3>
 <form action="member_add_back.php" method="POST">
 
 <div class="content-container-box">
@@ -247,7 +262,7 @@ else { echo "<center>No Records</center>";}
 <tr>
 <td></td>
 <td></td>
-<td><button style="height: 30px; background: #417088; color: #fff; width: 70px; border: 1px solid" name="loginBtn">Submit</button></td>
+<td><button name="loginBtn">Submit</button></td>
 <td></td>
 </tr>
 <tr>

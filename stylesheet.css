@@ -43,6 +43,7 @@ select {
 
 .header{
 	background: #18508C;
+	
 }
 .header .row{
 	margin-top: 70px;
@@ -68,7 +69,8 @@ nav ul li{
 }
 
 #menu-items{
-	font-size: 18px;
+	font-family: Tw Cen MT;
+	font-size: 19px;
 	color: #ffffff;
 }
 
