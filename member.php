@@ -128,6 +128,7 @@ echo "<th>Address</th>";
 echo "<th>Contact</th>";
 echo "<th>Year Level</th>";
 echo "<th>Status</th>";
+echo "<th>Action</th>";
 echo "</tr>";
 
 //papar semua data dari jadual dalam DB
@@ -141,6 +142,7 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<td>".$row['contact']."</td>";
 	echo "<td>".$row['year_level']."</td>";
 	echo "<td>".$row['status']."</td>";
+	echo "<td><button><a href='member_delete.php? deleteid=".$row['member_id']."'>Delete</a></button></td>";
 	echo "</tr>";
 }
 echo "</table>";
