@@ -11,32 +11,6 @@ table {
 	font-size: 19px;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-/* Create three unequal columns that floats next to each other */
-.column {
-  float: left;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-}
-
-.left  {
-  width: 50%;
-}
-
-.middle {
-  width: 25%;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 </style>
 </head>
 <body>
@@ -44,8 +18,7 @@ table {
 //Connect to database
 include ('db_conn.php');
 ?>
-<div class="row">
-<div class="column left">
+
 <form action="" method="post">
 <p><center>
 <select name ="carian">
@@ -90,7 +63,7 @@ break;
 } else{
 //jika user tidak buat carian, paper senarai secara default
 //Papar/Select data dari DB
-$query = "SELECT book.book_id, book.book_title, book.author, borrowdetails.borrow_status, IF(borrowdetails.date_return>0, 'YES', 'NO') AS test 
+$query = "SELECT book.book_id, book.book_title, book.author, borrow.date_borrow, borrow.due_date, borrowdetails.borrow_status, borrowdetails.date_return
 FROM book, borrow, borrowdetails
 WHERE book.book_id = borrowdetails.book_id AND borrow.borrow_id = borrowdetails.borrow_id";
 }
@@ -101,15 +74,21 @@ $result = mysqli_query($conn, $mysql) or die(mysql_error());
 if (mysqli_num_rows($result) > 0) {
 //table untuk paparan data
 echo "<table border='1'>";
-echo "<col width='70'>"; //saiz column 1
-echo "<col width='150'>"; //saiz column 2
-echo "<col width='110'>"; //saiz column 4
-echo "<col width='50'>"; //saiz column 5
+echo "<col width='70'>"; 
+echo "<col width='150'>"; 
+echo "<col width='110'>"; 
+echo "<col width='100'>"; 
+echo "<col width='110'>"; 
+echo "<col width='110'>"; 
+echo "<col width='110'>"; 
 echo "<tr style='height: 50px; background: #ddd;'>";
 echo "<th >Book ID</th>";
 echo "<th>Title</th>";
 echo "<th>Author</th>";
-echo "<th>Availability</th>";
+echo "<th>Date Borrow</th>";
+echo "<th>Date Due</th>";
+echo "<th>Borrow Status</th>";
+echo "<th>Date Return</th>";
 echo "</tr>";
 
 //papar semua data dari jadual dalam DB
@@ -118,7 +97,10 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<td>".$row['book_id']."</td>"; //nama atribut
 	echo "<td>".$row['book_title']."</td>";
 	echo "<td>".$row['author']."</td>";
-	echo "<td>".$row['test']."</td>";
+	echo "<td>".$row['date_borrow']."</td>";
+	echo "<td>".$row['due_date']."</td>";
+	echo "<td>".$row['borrow_status']."</td>";
+	echo "<td>".$row['date_return']."</td>";
 	
 	echo "</tr>";
 }
@@ -127,78 +109,6 @@ echo "</table>";
 else { echo "<center>No Records</center>";}
 ?>
 </div>
-<div class="column middle" >
-<form action="borrow_add_back.php" method="POST">
 
-<div class="content-container-box">
-<div style="display: flex">
-<div style="width: 350px;">
-<div class="book-contents" style="border: 1px #000 solid; border-radius: 20px;  padding: 30px">
-
-<table cellpadding=5px style="border: none">
-<tr>
-<td></td>
-<td></td>
-<td style="width: 30px"></td>
-</tr>
-
-<tr>
-<td></td>
-<td> Book ID:</td>
-<td><input class = "input" type="text" name="i_bookid" required></td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td>Member ID :</td>
-<td><input type="text" name="i_memberid" required></td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td>Borrow Status :</td>
-<td><select name = "i_borrow_status">
-	<option>Select</option>
-	<option value = "pending">Borrow</option>
-	<option value = "returned">Return</option>
-	</td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td>Date Borrow :</td>
-<td><input type="datetime-local"  name="i_date_borrow" required></td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td>Due Date :</td>
-<td><input type="date"  name="i_duedate" required></td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td><button style="height: 30px; background: #417088; color: #fff; width: 70px; border: 1px solid" name="loginBtn">Submit</button></td>
-<td></td>
-</tr>
-
-</table>
-
-</div>
-</div>
-</div>
-</div>
-
-</form>
-</div>
-</div>
-
-</div>
 </body>
 </html>
