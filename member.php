@@ -142,8 +142,8 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<td>".$row['contact']."</td>";
 	echo "<td>".$row['year_level']."</td>";
 	echo "<td>".$row['status']."</td>";
-	echo "<td><button><a href='member_delete.php? deleteid=".$row['member_id']."'>Delete</a></button></td>";
-	echo "<td><button><a href='member_update.php'>Update</a></button><button><a href=''>Delete</a></button></td>";
+	echo "<td><button><a href='member_delete.php? deleteid=".$row['member_id']."'>Delete</a></button>";
+	echo "<button><a href='member_update.php' updateteid=".$row['member_id'].">Update</a></button></td>";
 	echo "</tr>";
 }
 echo "</table>";
