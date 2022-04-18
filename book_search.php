@@ -118,7 +118,7 @@ echo "<th>Author</th>";
 echo "<th>ISBN</th>";
 echo "<th>Date Added</th>";
 echo "<th>Status</th>";
-echo "<th>Action</th>";
+
 echo "</tr>";
 
 //papar semua data dari jadual dalam DB
