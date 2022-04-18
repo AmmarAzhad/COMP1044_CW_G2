@@ -82,11 +82,22 @@ else {
 }
 ?>
 
+<?php
+$id = $_GET['updateid'];
+$query = "SELECT * FROM book WHERE book_id = $id";
+$mysql = $query;
+$result = mysqli_query($conn, $mysql) or die(mysql_error());
+$row = mysqli_fetch_assoc($result);
+$book_title = $row['book_title'];
+$author = $row['author'];
+$book_copies = $row['book_copies'];
+$book_pub = $row['book_pub'];
+$publisher_name = $row['publisher_name'];
+$isbn = $row['isbn'];
+$copyright_year = $row['copyright_year'];
+$date = $row['date_added'];
+
 ?>
-
-
-
-
 
 <div id="title"><p>Library Read 2gether<p>Update Book Details</div>
 
@@ -104,12 +115,11 @@ else {
 </tr>
 
 
-
 <tr>
 <td></td>
 <td> Book Title:</td>
 <div class="search">
-<td><input class = "input" type="text" placeholder="Fantastic Pets" name="i_booktitle" required></td>
+<td><input class = "input" type="text" placeholder="Fantastic Pets" name="i_booktitle" required value="<?php echo $book_title?>"></td>
 </div>
 <td></td>
 </tr>
@@ -117,45 +127,45 @@ else {
 <tr>
 <td></td>
 <td>Author :</td>
-<td><input type="text" name="i_author" required></td>
+<td><input type="text" name="i_author" required value="<?php echo $author?>"></td>
 <td></td>
 </tr>
 
 <tr>
 <td></td>
 <td>Book Copies :</td>
-<td><input type="text" name="i_bookcopies" required></td>
+<td><input type="text" name="i_bookcopies" required value="<?php echo $book_copies?>"></td>
 <td></td>
 </tr>
 <tr>
 <tr>
 <td></td>
 <td>Book Publisher Company :</td>
-<td><input type="text" placeholder="Regency Publishing Group" name="i_bookpub" required></td>
+<td><input type="text" placeholder="Regency Publishing Group" name="i_bookpub" required value="<?php echo $book_pub?>"></td>
 <td></td>
 </tr>
 <tr>
 <td></td>
 <td>Publisher Name :</td>
-<td><input type="text" placeholder="0174371312" name="'i_pubname" required></td>
+<td><input type="text" placeholder="0174371312" name="'i_pubname" required value="<?php echo $publisher_name?>"></td>
 <td></td>
 </tr>
 <tr>
 <td></td>
 <td>ISBN :</td>
-<td><input type="text" placeholder="0-12-345678-9" name="i_isbn" required></td>
+<td><input type="text" placeholder="0-12-345678-9" name="i_isbn" required value="<?php echo $isbn?>"></td>
 <td></td>
 </tr>
 <tr>
 <td></td>
 <td>Copyright Year :</td>
-<td><input type="text" name="i_copyrightyear" required></td>
+<td><input type="text" name="i_copyrightyear" required value="<?php echo $copyright_year?>"></td>
 <td></td>
 </tr>
 <tr>
 <td></td>
 <td>Date Added :</td>
-<td><input type="date" placeholder="0174371312" name="i_dateadded" required></td>
+<td><input type="date" placeholder="0174371312" name="i_dateadded" required value="<?php echo $date?>"></td>
 <td></td>
 </tr>
 <tr>

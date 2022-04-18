@@ -53,33 +53,6 @@ include ("header.html");
 	</form>
 </div>
 
-<div class="container center">
-	<form action="" method="post">
-		<p><center>
-		Book ID:
-		<input type="text" name="i_delete">
-		<input type="submit" value="Delete" name="delete" class="searchbtn">
-		<!--<input type="submit" value="Update" name="update" class="searchbtn" formmethod="POST" formaction="book_update.php">-->
-		</p></center>
-	</form>
-</div>
-
-<?php
-if (isset($_POST['delete']) && !empty($_POST['i_delete']))
-{
-	echo "$_POST[i_delete]";
-	$del = "DELETE FROM book WHERE book_id = '$_POST[i_delete]'";
-
-	if (mysqli_query($conn, $del)) {
-	echo '<script type="text/javascript">;
-	alert("Book Deleted Successfully!");
-		 window.location.href="book_delete.php";</script>';
-	} 
-}
-
-?>
-
-
 
 <?php
 //jika user klik butang "Cari" dan textbox carian tidak empty
@@ -147,7 +120,7 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<td>".$row['isbn']."</td>";
 	echo "<td>".$row['date_added']."</td>";
 	echo "<td>".$row['status']."</td>";
-	echo "<td><button><a href='book_update.php'>Update</a></button></td>";
+	echo "<td><button><a href='book_update.php? updateid=".$row['book_id']."'>Update</a></button><button><a href='book_delete_back.php? deleteid=".$row['book_id']."'>Delete</a></button></td>";
 	echo "</tr>";
 }
 echo "</table>";
