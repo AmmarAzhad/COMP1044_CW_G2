@@ -142,7 +142,7 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<td>".$row['contact']."</td>";
 	echo "<td>".$row['year_level']."</td>";
 	echo "<td>".$row['status']."</td>";
-	echo "<td><button><a href=''>Update</a></button><button><a href=''>Delete</a></button></td>";
+	echo "<td><button><a href='member_update.php'>Update</a></button><button><a href=''>Delete</a></button></td>";
 	echo "</tr>";
 }
 echo "</table>";

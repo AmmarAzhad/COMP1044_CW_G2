@@ -165,7 +165,7 @@ $date = $row['date_added'];
 <tr>
 <td></td>
 <td>Date Added :</td>
-<td><input type="date" placeholder="0174371312" name="i_dateadded" required value="<?php echo $date?>"></td>
+<td><input type="datetime-local" placeholder="0174371312" name="i_dateadded" required value="<?php echo $date?>"></td>
 <td></td>
 </tr>
 <tr>
