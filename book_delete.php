@@ -53,33 +53,6 @@ include ("header.html");
 	</form>
 </div>
 
-<div class="container center">
-	<form action="" method="post">
-		<p><center>
-		Book ID:
-		<input type="text" name="i_delete">
-		<input type="submit" value="Delete" name="delete" class="searchbtn">
-		<!--<input type="submit" value="Update" name="update" class="searchbtn" formmethod="POST" formaction="book_update.php">-->
-		</p></center>
-	</form>
-</div>
-
-<?php
-if (isset($_POST['delete']) && !empty($_POST['i_delete']))
-{
-	echo "$_POST[i_delete]";
-	$del = "DELETE FROM book WHERE book_id = '$_POST[i_delete]'";
-
-	if (mysqli_query($conn, $del)) {
-	echo '<script type="text/javascript">;
-	alert("Book Deleted Successfully!");
-		 window.location.href="book_delete.php";</script>';
-	} 
-}
-
-?>
-
-
 
 <?php
 //jika user klik butang "Cari" dan textbox carian tidak empty
@@ -123,17 +96,29 @@ $result = mysqli_query($conn, $mysql) or die(mysql_error());
 if (mysqli_num_rows($result) > 0) {
 //table untuk paparan data
 echo "<table border='1'>";
-echo "<col width='100'>"; //saiz column 1
-echo "<col width='210'>"; //saiz column 2
-echo "<col width='170'>"; //saiz column 4
-echo "<col width='180'>"; //saiz column 5
-echo "<col width='210'>"; //saiz column 6
-echo "<col width='150'>"; //saiz column 7
+echo "<col width='80'>"; //book id
+echo "<col width='210'>"; //title
+echo "<col width='80'>"; //category id
+echo "<col width='180'>"; //author
+echo "<col width='80'>"; //book copies
+echo "<col width='150'>"; //book publisher company
+echo "<col width='150'>"; //Publisher name
+echo "<col width='180'>"; //isbn
+echo "<col width='80'>"; //copyright year
+echo "<col width='180'>"; //date added
+echo "<col width='100'>"; //status
+echo "<col width='130'>"; //action
 echo "<tr>";
+
 echo "<th>Book ID</th>";
 echo "<th>Title</th>";
+echo "<th>Category ID</th>";
 echo "<th>Author</th>";
+echo "<th>Book Copies</th>";
+echo "<th>Book Publisher Company</th>";
+echo "<th>Publisher Name</th>";
 echo "<th>ISBN</th>";
+echo "<th>Copyright Year</th>";
 echo "<th>Date Added</th>";
 echo "<th>Status</th>";
 echo "<th>Action</th>";
@@ -143,11 +128,16 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<tr>";
 	echo "<td>".$row['book_id']."</td>"; 
 	echo "<td>".$row['book_title']."</td>";
+	echo "<td>".$row['category_id']."</td>";
 	echo "<td>".$row['author']."</td>";
+	echo "<td>".$row['book_copies']."</td>";
+	echo "<td>".$row['book_pub']."</td>";
+	echo "<td>".$row['publisher_name']."</td>";
 	echo "<td>".$row['isbn']."</td>";
+	echo "<td>".$row['copyright_year']."</td>";
 	echo "<td>".$row['date_added']."</td>";
 	echo "<td>".$row['status']."</td>";
-	echo "<td><button><a href='book_update.php'>Update</a></button></td>";
+	echo "<td><button><a href='book_update.php? updateid=".$row['book_id']."'>Update</a></button><button><a href='book_delete_back.php? deleteid=".$row['book_id']."'>Delete</a></button></td>";
 	echo "</tr>";
 }
 echo "</table>";
