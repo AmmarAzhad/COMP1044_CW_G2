@@ -39,6 +39,7 @@ table {
 }
 
 </style>
+
 </head>
 <body>
 <?php
@@ -111,19 +112,32 @@ $result = mysqli_query($conn, $mysql) or die(mysql_error());
 if (mysqli_num_rows($result) > 0) {
 //table untuk paparan data
 echo "<table border='1'>";
-echo "<col width='70'>"; //saiz column 1
-echo "<col width='150'>"; //saiz column 2
-echo "<col width='110'>"; //saiz column 4
-echo "<col width='120'>"; //saiz column 5
-echo "<col width='150'>"; //saiz column 6
-echo "<col width='90'>"; //saiz column 7
+echo "<col width='80'>"; //book id
+echo "<col width='210'>"; //title
+echo "<col width='80'>"; //category id
+echo "<col width='180'>"; //author
+echo "<col width='80'>"; //book copies
+echo "<col width='150'>"; //book publisher company
+echo "<col width='150'>"; //Publisher name
+echo "<col width='180'>"; //isbn
+echo "<col width='80'>"; //copyright year
+echo "<col width='180'>"; //date added
+echo "<col width='100'>"; //status
+echo "<col width='130'>"; //action
 echo "<tr style='height: 50px; background: #ddd;'>";
-echo "<th >Book ID</th>";
+echo "<th>Book ID</th>";
 echo "<th>Title</th>";
+echo "<th>Category ID</th>";
 echo "<th>Author</th>";
+echo "<th>Book Copies</th>";
+echo "<th>Book Publisher Company</th>";
+echo "<th>Publisher Name</th>";
 echo "<th>ISBN</th>";
+echo "<th>Copyright Year</th>";
 echo "<th>Date Added</th>";
 echo "<th>Status</th>";
+echo "<th>Edit</th>";
+echo "<th>Delete</th>";
 echo "</tr>";
 
 //papar semua data dari jadual dalam DB
@@ -131,10 +145,17 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<tr>";
 	echo "<td>".$row['book_id']."</td>"; //nama atribut
 	echo "<td>".$row['book_title']."</td>";
+	echo "<td>".$row['category_id']."</td>";
 	echo "<td>".$row['author']."</td>";
+	echo "<td>".$row['book_copies']."</td>";
+	echo "<td>".$row['book_pub']."</td>";
+	echo "<td>".$row['publisher_name']."</td>";
 	echo "<td>".$row['isbn']."</td>";
+	echo "<td>".$row['copyright_year']."</td>";
 	echo "<td>".$row['date_added']."</td>";
 	echo "<td>".$row['status']."</td>";
+	echo "<td style='text-align:center'><a href='book_update.php? updateid=".$row['book_id']."'><img src='images/edit.png' width=20></a></td>";
+	echo "<td><center><a href='book_delete_back.php? deleteid=".$row['book_id']."'><img src='images/delete.png' width=20></a></center></td>";
 	echo "</tr>";
 }
 echo "</table>";

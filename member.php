@@ -160,8 +160,8 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<td>".$row['type_id']."</td>";
 	echo "<td>".$row['year_level']."</td>";
 	echo "<td>".$row['status']."</td>";
-	echo "<td><a href='member_update.php? updateid=".$row['member_id']."'><img src='images/edit.png' width=30 height=30></a></td>";
-	echo "<td><center><a href='member_delete.php? deleteid=".$row['member_id']."'><img src='images/delete.png' width=26 height=30></a></center></td>";
+	echo "<td style='text-align:center'><a href='member_update.php? updateid=".$row['member_id']."'><img src='images/edit.png' width=20></a></td>";
+	echo "<td><center><a href='member_delete.php? deleteid=".$row['member_id']."'><img src='images/delete.png' width=20></a></center></td>";
 	echo "</tr>";
 }
 echo "</table>";

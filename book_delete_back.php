@@ -10,7 +10,7 @@ if (isset($_GET['deleteid']))
 	if (mysqli_query($conn, $del)) {
 	echo '<script type="text/javascript">;
 	alert("Book Deleted Successfully!");
-		 window.location.href="book_delete.php";</script>';
+		 window.location.href="book.php";</script>';
 	} 
 }
 ?>
