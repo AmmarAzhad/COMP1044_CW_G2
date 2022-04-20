@@ -57,7 +57,6 @@ include ("header.html");
 if(isset($_POST['update'])){
     $id = $_GET['updateid'];
 $book_title=$_POST['i_booktitle'];
-$author =$_POST['i_author'];
 $member_id = $_POST['i_memberid'];
 $date_borrow = $_POST['i_date_borrow'];
 $duedate = $_POST['i_duedate'];
@@ -66,7 +65,7 @@ $date_return = $_POST['i_date_return'];
 
 
 //Simpan data dalam DB
-$mysql = "UPDATE borrowdetails SET book_title='$book_title', author='$author', member_id= '$member_id', date_borrow='$date_borrow', due_date='$duedate', borrow_status='$borrow_status', date_return='$date_return' WHERE book_id = $id";
+$mysql = "UPDATE borrowdetails SET date_borrow='$date_borrow', due_date='$duedate', borrow_status='$borrow_status', date_return='$date_return' WHERE book_id = $id";
 if (mysqli_query($conn, $mysql)) {
 	//papar javascript alert jika pengguna baru berjaya daftar
 	echo '<script type="text/javascript">;
@@ -88,12 +87,12 @@ if (isset($_GET['updateid'])){
   $mysql = $query;
   $result = mysqli_query($conn, $mysql) or die(mysql_error());
   $row = mysqli_fetch_assoc($result);
-  $book_title = $row['book_title'];
-  $author = $row['author'];
-  $dateborrow=$row['date_borrow'];
-  $duedate=$row['due_date'];
-  $borrow_status=$row['borrow_status'];
-  $date_return=$row['date_return'];
+  $book_title = $row['book_title'];//book
+  $member_id=$row['member_id'];//borrow
+  $dateborrow=$row['date_borrow'];//borrow
+  $duedate=$row['due_date'];//borrow
+  $borrow_status=$row['borrow_status'];//borrowdetails
+  $date_return=$row['date_return'];//borrowdetails
 }
 ?>
 
@@ -136,11 +135,21 @@ if (isset($_GET['updateid'])){
 <td></td>
 </tr>
 
+<tr>
+<td></td>
+<td> Member ID:</td>
+<div class="search">
+<td><input class = "input" type="text" name="i_memberid" required value="<?php echo $member_id?>">
+</td>
+</div>
+<td></td>
+</tr>
+
 
 <tr>
 <td></td>
 <td>Date Borrow :</td>
-<td><input type="text" name="i_date_borrow" required value="<?php echo $date_borrow?>"></td>
+<td><input type="text" name="i_date_borrow" required value="<?php echo $dateborrow?>"></td>
 <td></td>
 </tr>
 
