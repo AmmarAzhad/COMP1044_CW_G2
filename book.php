@@ -37,16 +37,8 @@ table {
   display: table;
   clear: both;
 }
-</style>
 
-<script>
-	function confirmation() {
-		conf = confirm("Are you sure?");
-		if(conf == false){
-			document.getElementById("deletebtn").href = "book.php";
-		}
-	}
-</script>
+</style>
 
 </head>
 <body>
@@ -163,7 +155,7 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<td>".$row['date_added']."</td>";
 	echo "<td>".$row['status']."</td>";
 	echo "<td style='text-align:center'><a href='book_update.php? updateid=".$row['book_id']."'><img src='images/edit.png' width=20></a></td>";
-	echo "<td><center><a id = 'deletebtn' onclick='confirmation()' href='book_delete_back.php? deleteid=".$row['book_id']."'><img src='images/delete.png' width=20></a></center></td>";
+	echo "<td><center><a href='book_delete_back.php? deleteid=".$row['book_id']."'><img src='images/delete.png' width=20></a></center></td>";
 	echo "</tr>";
 }
 echo "</table>";

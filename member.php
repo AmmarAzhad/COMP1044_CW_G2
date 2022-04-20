@@ -51,16 +51,6 @@ table {
 }
 
 </style>
-
-<script>
-	function confirmation() {
-		conf = confirm("Are you sure?");
-		if(conf == false){
-			document.getElementById("deletebtn").href = "member.php";
-		}
-	}
-</script>
-
 </head>
 <body>
 <?php
@@ -171,7 +161,7 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<td>".$row['year_level']."</td>";
 	echo "<td>".$row['status']."</td>";
 	echo "<td style='text-align:center'><a href='member_update.php? updateid=".$row['member_id']."'><img src='images/edit.png' width=20></a></td>";
-	echo "<td><center><a id = 'deletebtn' onclick='confirmation()' href='member_delete.php? deleteid=".$row['member_id']."'><img src='images/delete.png' width=20></a></center></td>";
+	echo "<td><center><a href='member_delete.php? deleteid=".$row['member_id']."'><img src='images/delete.png' width=20></a></center></td>";
 	echo "</tr>";
 }
 echo "</table>";
