@@ -98,6 +98,7 @@ echo "<th>Date Borrow</th>";
 echo "<th>Date Due</th>";
 echo "<th>Borrow Status</th>";
 echo "<th>Date Return</th>";
+echo "<th>Edit</th>";
 echo "</tr>";
 
 //papar semua data dari jadual dalam DB
@@ -111,7 +112,7 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<td>".$row['due_date']."</td>";
 	echo "<td>".$row['borrow_status']."</td>";
 	echo "<td>".$row['date_return']."</td>";
-	
+	echo "<td style='text-align:center'><a href='borrow_update.php? updateid=".$row['book_id']."'><img src='images/edit.png' width=20></a></td>";
 	echo "</tr>";
 }
 echo "</table>";
