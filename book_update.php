@@ -172,8 +172,8 @@ else {
 <tr>
 <td></td>
 <td></td>
-<td><input type="submit" value="Update" name="update" class="button1" formmethod="POST" formaction="book_delete.php"></td>
-<td><button class="button2"><a href="book_delete.php" style="color:white">Cancel</a></button></td>
+<td><input type="submit" value="Update" name="update" class="button1" formmethod="POST" formaction="book.php"></td>
+<td><button class="button2"><a href="book.php" style="color:white">Cancel</a></button></td>
 <td></td>
 </tr>
 
