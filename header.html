@@ -1,25 +1,39 @@
 <html>
 <head>
-<!-- INTERNAL CSS -->
 <link rel = "stylesheet" href = "stylesheet.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- javascript for creating a pop-up box whether users confirm to log out -->
+<script>
+	function confirmation() {
+		conf = confirm("Are you sure to log out?");
+		if(conf == false){
+			document.getElementById("logoutbtn").href = "main_page.php";
+		}
+	}
+</script>
+<!-- INTERNAL CSS -->
 <style>
 head{
 	font-family: Tw Cen MT;
 	font-size: 19px;
 }
+
 </style>
 </head>
+<!-- applying css -->
 <div class="header">
 	<div class="container">
 		<div class="navbar">
+			<!-- linking main page -->
 			<a href="main_page.php"><img src="images/whitelogo.png" alt="Logo" id = "nav-logo"></a>
 			<nav>
+					<!-- linking every pages -->
 				<ul>
 					<li><a href="borrow.php" id="menu-items">Borrow</a></li>
 					<li><a href="book.php" id="menu-items">Books</a></li>
 					<li><a href="member.php" id="menu-items">Members</a></li>
-					<li><a href="login.php" id="menu-items">Log Out</a></li>
+					<li><a href="login.php" id = 'logoutbtn' onclick='confirmation()'><p style="color:white; font-family: Tw Cen MT; font-size: 19px; ">Log Out</p></a></li>
 				</ul>
 			</nav>
 		</div>
