@@ -72,7 +72,7 @@ if (mysqli_query($conn, $mysql)) {
 	//papar javascript alert jika pengguna baru berjaya daftar
 	echo '<script type="text/javascript">;
 	alert("Updated Successfully!");
-		 window.location.href="book_delete.php";</script>';
+		 window.location.href="book.php";</script>';
 		 //selepas berjaya daftar, kembali ke login page
 		 
 } 
