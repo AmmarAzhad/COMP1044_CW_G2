@@ -113,7 +113,7 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<td>".$row['due_date']."</td>";
 	echo "<td>".$row['borrow_status']."</td>";
 	echo "<td>".$row['date_return']."</td>";
-	echo "<td style='text-align:center'><a href='borrow_update.php? updateid=".$row['book_id']."'><img src='images/edit.png' width=20></a></td>";
+	echo "<td style='text-align:center'><a href='borrow_update.php? updateid=".$row['borrow_id']."'><img src='images/edit.png' width=20></a></td>";
 	echo "</tr>";
 }
 echo "</table>";
