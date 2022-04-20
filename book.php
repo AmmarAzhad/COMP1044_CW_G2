@@ -61,10 +61,11 @@ include('header.html');
 <form action="" method="post">
 <p><center>
 <select name ="carian">
-<option>All</option>
+<option value="all">All</option>
 <option value="book_id">Book ID</option>
 <option value="book_title">Title</option>
 <option value="author">Author</option>
+<option value="book_pub">Publisher</option>
 <option value="isbn">ISBN</option>
 <option value="date_added">Date Added</option>
 <option value="status">Status</option>
@@ -82,31 +83,46 @@ if (isset($_POST['cari']) && !empty($_POST['i_carian']) )
 //kenalpasti dropdown list apa yang dipilih oleh user
 switch ($_POST["carian"])
 {
-case "book_id": //jika user pilih search by nama
-$query = "SELECT * FROM book
-WHERE book_id LIKE '%$_POST[i_carian]%'";
-break;
-case "book_title": //jika user pilih search by nokp
-$query = "SELECT * FROM book
-WHERE book_title LIKE '$_POST[i_carian]'";
-break;
-case "author": //jika user pilih search by kelas
-$query = "SELECT * FROM book
-WHERE author LIKE '$_POST[i_carian]'";
-break;
-case "isbn": //jika user pilih search by notel
-$query = "SELECT * FROM book
-WHERE isbn = '$_POST[i_carian]'";
-break;
-case "date_added": //jika user pilih search by kodAJK
-$query = "SELECT * FROM book
-WHERE date_added LIKE '$_POST[i_carian]'";
-break;
-case "status": //jika user pilih search by kodAJK
-$query = "SELECT * FROM book
-WHERE status = '$_POST[i_carian]'";
-break;
-
+	case "all":
+		$query = "SELECT * FROM book 
+		WHERE book_id LIKE '%$_POST[i_carian]%' 
+		OR book_title LIKE '$_POST[i_carian]'
+		OR category_id LIKE '$_POST[i_carian]'
+		OR author LIKE '$_POST[i_carian]'
+		OR book_copies LIKE '$_POST[i_carian]'
+		OR book_pub LIKE '$_POST[i_carian]'
+		OR isbn = '$_POST[i_carian]'
+		OR date_added LIKE '$_POST[i_carian]'
+		OR status = '$_POST[i_carian]'";
+		break;
+	case "book_id": //jika user pilih search by nama
+		$query = "SELECT * FROM book
+		WHERE book_id LIKE '%$_POST[i_carian]%'";
+		break;
+	case "book_title": //jika user pilih search by nokp
+		$query = "SELECT * FROM book
+		WHERE book_title LIKE '$_POST[i_carian]'";
+		break;
+	case "author": //jika user pilih search by kelas
+		$query = "SELECT * FROM book
+		WHERE author LIKE '$_POST[i_carian]'";
+		break;
+	case "book_pub": //jika user pilih search by nama
+		$query = "SELECT * FROM book
+		WHERE book_pub LIKE '%$_POST[i_carian]%'";
+		break;
+	case "isbn": //jika user pilih search by notel
+		$query = "SELECT * FROM book
+		WHERE isbn = '$_POST[i_carian]'";
+		break;
+	case "date_added": //jika user pilih search by kodAJK
+		$query = "SELECT * FROM book
+		WHERE date_added LIKE '$_POST[i_carian]'";
+		break;
+	case "status": //jika user pilih search by kodAJK
+		$query = "SELECT * FROM book
+		WHERE status = '$_POST[i_carian]'";
+		break;
 }
 } else{
 //jika user tidak buat carian, paper senarai secara default

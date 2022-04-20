@@ -77,10 +77,14 @@ include('header.html');
 <form action="" method="post">
 <p><center>
 <select name ="carian">
-<option>All</option>
+<option value="all">All</option>
 <option value="member_id">Member ID</option>
-<option value="gender">Gender</option>
 <option value="firstname">First Name</option>
+<option value="lastname">Last Name</option>
+<option value="gender">Gender</option>
+<option value="address">Address</option>
+<option value="contact">Contact</option>
+<option value="type_id">Type ID</option>
 <option value="year_level">Year Level</option>
 <option value="status">Status</option>
 
@@ -98,26 +102,53 @@ if (isset($_POST['cari']) && !empty($_POST['i_carian']) )
 //kenalpasti dropdown list apa yang dipilih oleh user
 switch ($_POST["carian"])
 {
-case "member_id": //jika user pilih search by nama
-$query = "SELECT * FROM member
-WHERE member_id LIKE '%$_POST[i_carian]%'";
-break;
-case "gender": //jika user pilih search by nokp
-$query = "SELECT * FROM member
-WHERE gender LIKE '$_POST[i_carian]'";
-break;
-case "firstname": //jika user pilih search by kelas
-$query = "SELECT * FROM member
-WHERE firstname LIKE '$_POST[i_carian]'";
-break;
-case "year_level": //jika user pilih search by notel
-$query = "SELECT * FROM member
-WHERE year_level = '$_POST[i_carian]'";
-break;
-case "status": //jika user pilih search by kodAJK
-$query = "SELECT * FROM member
-WHERE status = '$_POST[i_carian]'";
-break;
+	case "all":
+		$query = "SELECT * FROM member 
+		WHERE member_id LIKE '%$_POST[i_carian]%'
+		OR gender LIKE '$_POST[i_carian]'
+		OR firstname LIKE '$_POST[i_carian]'
+		OR lastname LIKE '$_POST[i_carian]'
+		OR contact LIKE '$_POST[i_carian]'
+		OR type_id = '$_POST[i_carian]'
+		OR year_level = '$_POST[i_carian]'
+		OR status = '$_POST[i_carian]'";
+		break;
+	case "member_id": 
+		$query = "SELECT * FROM member
+		WHERE member_id LIKE '%$_POST[i_carian]%'";
+		break;
+	case "gender": 
+		$query = "SELECT * FROM member
+		WHERE gender LIKE '$_POST[i_carian]'";
+		break;
+	case "firstname": 
+		$query = "SELECT * FROM member
+		WHERE firstname LIKE '$_POST[i_carian]'";
+		break;
+	case "lastname": 
+		$query = "SELECT * FROM member
+		WHERE lastname LIKE '$_POST[i_carian]'";
+		break;
+	case "address": 
+		$query = "SELECT * FROM member
+		WHERE address LIKE '$_POST[i_carian]'";
+		break;
+	case "contact": 
+		$query = "SELECT * FROM member
+		WHERE contact = '$_POST[i_carian]'";
+		break;
+	case "type_id": 
+		$query = "SELECT * FROM member
+		WHERE type_id = '$_POST[i_carian]'";
+		break;
+	case "year_level": 
+		$query = "SELECT * FROM member
+		WHERE year_level = '$_POST[i_carian]'";
+		break;
+	case "status": 
+		$query = "SELECT * FROM member
+		WHERE status = '$_POST[i_carian]'";
+		break;
 
 }
 } else{
