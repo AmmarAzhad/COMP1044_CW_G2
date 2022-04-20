@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="design.css">
+<link rel="stylesheet" href="stylesheet.css">
 <style>
 
 table {
@@ -15,9 +15,10 @@ table {
 
 <!-- link to register_back -->
 <form action="register_back.php" method="POST">
+<div style="display: flex;justify-content: center;width: 100%; height: 100vh;align-items: center;">
+<div style="display: flex;flex-flow: column; width: 300px;height: 600px;align-items: center">     
 <h1><center>Group Read 2gether Library</center>
 <h2><center>Sign Up</center>
-</div>
 
 <table cellpadding=5px>
 <tr>
@@ -81,7 +82,8 @@ table {
 <td></td>
 </tr>
 </table>
-
+</div>
+</div>
 </form>
 </body>
 </html>
