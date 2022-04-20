@@ -10,7 +10,7 @@ include ('header.html');
 ?>
 <body>
 
-        <img src="images/main.png" style="height: 100%; width: 100%"/>
+        <img src="images/lib.png" style="height: 100%; width: 100%"/>
 		
 </body>
 </html>
