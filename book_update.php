@@ -51,29 +51,31 @@ table {
 <?php
 //Connect to database
 include ('db_conn.php');
+//link to header.html
 include ("header.html");
 
-
+//if user click on the edit icon
 if(isset($_POST['update'])){
+	
     $id = $_GET['updateid'];
-$book_title=$_POST['i_booktitle'];
-$author =$_POST['i_author'];
-$book_copies =$_POST['i_bookcopies'];
-$book_pub =$_POST['i_bookpub'];
-$publisher_name =$_POST['i_pubname'];
-$isbn =$_POST['i_isbn'];
-$copyright_year =$_POST['i_copyrightyear'];
-$date_added =$_POST['i_dateadded'];
-$status =$_POST['i_status'];
+	$book_title=$_POST['i_booktitle'];
+	$author =$_POST['i_author'];
+	$book_copies =$_POST['i_bookcopies'];
+	$book_pub =$_POST['i_bookpub'];
+	$publisher_name =$_POST['i_pubname'];
+	$isbn =$_POST['i_isbn'];
+	$copyright_year =$_POST['i_copyrightyear'];
+	$date_added =$_POST['i_dateadded'];
+	$status =$_POST['i_status'];
 
-//Simpan data dalam DB
+//Update data in the table
 $mysql = "UPDATE book SET book_title='$book_title', author='$author', book_copies='$book_copies', book_pub='$book_pub', isbn='$isbn', copyright_year='$copyright_year', date_added='$date_added' , status='$status' WHERE book_id = $id";
 if (mysqli_query($conn, $mysql)) {
-	//papar javascript alert jika pengguna baru berjaya daftar
+	//Display pop-up box that the user has updated successfully 
 	echo '<script type="text/javascript">;
 	alert("Updated Successfully!");
 		 window.location.href="book.php";</script>';
-		 //selepas berjaya daftar, kembali ke login page
+		 //after succesfully register new user, wil redirect back to book.php page
 		 
 } 
 else {
@@ -83,6 +85,7 @@ else {
 ?>
 
 <?php
+
 if (isset($_GET['updateid'])){
   $id = $_GET['updateid'];
   $query = "SELECT * FROM book WHERE book_id = $id";
@@ -99,10 +102,6 @@ if (isset($_GET['updateid'])){
   $date = $row['date_added'];
 }
 ?>
-
-
-
-
 
 <div id="title"><p>Library Read 2gether<p>Update Book Details</div>
 

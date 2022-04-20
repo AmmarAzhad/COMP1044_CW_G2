@@ -53,9 +53,9 @@ table {
 </style>
 <script>
 	function confirmation() {
-		conf = confirm("Are you sure?");
+		conf = confirm("Are you sure to delete this record?");
 		if(conf == false){
-			document.getElementById("deletebtn").href = "book.php";
+			document.getElementById("deletebtn").href = "member.php";
 		}
 	}
 </script>
@@ -65,7 +65,7 @@ table {
 <?php
 //Connect to database
 include ('db_conn.php');
-
+//
 include('header.html');
 ?>
 
@@ -90,7 +90,7 @@ include('header.html');
 
 </select>
 <input type="text" name="i_carian">
-<button name="cari">Submit</button>
+<button name="cari">Search</button>
 </p><center>
 </form>
 
