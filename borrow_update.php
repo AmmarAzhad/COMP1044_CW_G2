@@ -56,8 +56,11 @@ include ("header.html");
 
 if(isset($_POST['update'])){
     $id = $_GET['updateid'];
-$book_title=$_POST['i_booktitle'];
+$book_id=$_POST['i_bookid'];
+$borrow_id=$_POST['i_borrowid'];
 $member_id = $_POST['i_memberid'];
+$book_id=$_POST['i_bookid'];
+$book_title=$_POST['i_booktitle'];
 $date_borrow = $_POST['i_date_borrow'];
 $duedate = $_POST['i_duedate'];
 $borrow_status = $_POST['i_borrow_status'];
@@ -65,7 +68,7 @@ $date_return = $_POST['i_date_return'];
 
 
 //Simpan data dalam DB
-$mysql = "UPDATE borrowdetails SET date_borrow='$date_borrow', due_date='$duedate', borrow_status='$borrow_status', date_return='$date_return' WHERE book_id = $id";
+$mysql = "UPDATE borrowdetails, borrow SET borrow.date_borrow='$date_borrow', borrow.due_date='$duedate', borrowdetails.borrow_status='$borrow_status', borrowdetails.date_return='$date_return',  borrow.member_id='$member_id' WHERE borrow.borrow_id=$id";
 if (mysqli_query($conn, $mysql)) {
 	//papar javascript alert jika pengguna baru berjaya daftar
 	echo '<script type="text/javascript">;
@@ -83,16 +86,20 @@ else {
 <?php
 if (isset($_GET['updateid'])){
   $id = $_GET['updateid'];
-  $query = "SELECT * FROM book WHERE book_id = $id";
+  $query = "SELECT borrow.borrow_id, borrow.member_id, borrowdetails.book_id, book.book_title, borrow.date_borrow, borrow.due_date, borrowdetails.borrow_status, borrowdetails.date_return
+FROM book, borrow, borrowdetails
+WHERE book.book_id = borrowdetails.book_id AND borrow.borrow_id = borrowdetails.borrow_id AND borrow.borrow_id= $id";
   $mysql = $query;
   $result = mysqli_query($conn, $mysql) or die(mysql_error());
   $row = mysqli_fetch_assoc($result);
-  $book_title = $row['book_title'];//book
-  $member_id=$row['member_id'];//borrow
-  $dateborrow=$row['date_borrow'];//borrow
-  $duedate=$row['due_date'];//borrow
-  $borrow_status=$row['borrow_status'];//borrowdetails
-  $date_return=$row['date_return'];//borrowdetails
+  $borrow_id=$row['borrow_id'];
+  $book_id=$row['book_id'];
+  $book_title = $row['book_title'];
+  $member_id=$row['member_id'];
+  $dateborrow=$row['date_borrow'];
+  $duedate=$row['due_date'];
+  $borrow_status=$row['borrow_status'];
+  $date_return=$row['date_return'];
 }
 ?>
 
@@ -116,22 +123,13 @@ if (isset($_GET['updateid'])){
 <td style="width: 30px"></td>
 </tr>
 
-
-
 <tr>
 <td></td>
-<td> Book Title:</td>
+<td> Borrow ID:</td>
 <div class="search">
-<td><input class = "input" type="text" name="i_booktitle" required value="<?php echo $book_title?>">
+<td><input class = "input" type="text" name="i_borrowid" required value="<?php echo $borrow_id?>">
 </td>
 </div>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td>Author :</td>
-<td><input type="text" name="i_author" required value="<?php echo $author?>"></td>
 <td></td>
 </tr>
 
@@ -145,18 +143,39 @@ if (isset($_GET['updateid'])){
 <td></td>
 </tr>
 
+<tr>
+<td></td>
+<td> Book ID:</td>
+<div class="search">
+<td><input class = "input" type="text" name="i_bookid" required value="<?php echo $book_id?>"readonly>
+</td>
+</div>
+<td></td>
+</tr>
+
+
+<tr>
+<td></td>
+<td> Book Title:</td>
+<div class="search">
+<td><input class = "input" type="text" name="i_booktitle" required value="<?php echo $book_title?>"readonly>
+</td>
+</div>
+<td></td>
+</tr>
+
 
 <tr>
 <td></td>
 <td>Date Borrow :</td>
-<td><input type="text" name="i_date_borrow" required value="<?php echo $dateborrow?>"></td>
+<td><input type="datetime-local" name="i_date_borrow" required value="<?php echo $dateborrow?>"></td>
 <td></td>
 </tr>
 
 <tr>
 <td></td>
 <td>Date Due :</td>
-<td><input type="date" name="i_duedate" ></td>
+<td><input type="date" name="i_duedate" required value="<?php echo $duedate?>"></td>
 <td></td>
 </tr>
 
@@ -170,7 +189,7 @@ if (isset($_GET['updateid'])){
 <tr>
 <td></td>
 <td>Date Return :</td>
-<td><input type="datetime-local" name="i_date_return" ></td>
+<td><input type="datetime-local" name="i_date_return"required value="<?php echo $date_return?>"></td>
 <td></td>
 </tr>
 
