@@ -68,7 +68,7 @@ $date_return = $_POST['i_date_return'];
 
 
 //Simpan data dalam DB
-$mysql = "UPDATE borrowdetails, borrow SET borrow.date_borrow='$date_borrow', borrow.due_date='$duedate', borrowdetails.borrow_status='$borrow_status', borrowdetails.date_return='$date_return',  borrow.member_id='$member_id' WHERE borrow.borrow_id=$id";
+$mysql = "UPDATE borrowdetails, borrow SET borrow.date_borrow='$date_borrow', borrow.due_date='$duedate', borrowdetails.borrow_status='$borrow_status', borrowdetails.date_return='$date_return',  borrow.member_id='$member_id' WHERE borrowdetails.borrow_id=$id AND borrow.borrow_id=$id";
 if (mysqli_query($conn, $mysql)) {
 	//papar javascript alert jika pengguna baru berjaya daftar
 	echo '<script type="text/javascript">;
@@ -84,6 +84,7 @@ else {
 ?>
 
 <?php
+//to display details 
 if (isset($_GET['updateid'])){
   $id = $_GET['updateid'];
   $query = "SELECT borrow.borrow_id, borrow.member_id, borrowdetails.book_id, book.book_title, borrow.date_borrow, borrow.due_date, borrowdetails.borrow_status, borrowdetails.date_return
