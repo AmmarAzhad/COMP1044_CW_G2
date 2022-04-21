@@ -46,7 +46,7 @@ table {
 }
 </style>
 
-<!-- javascript for creating a pop-up box whether users confirm to log out -->
+<!-- javascript for creating a pop-up box whether users confirm to delete record -->
 <script>
 	function confirmation() {
 		conf = confirm("Are you sure to delete this record?");
@@ -72,7 +72,7 @@ include('header.html');
 <!-- search function for book -->
 <form action="" method="post">
 <p><center>
-<!-- dropdown for users to choose which opotions -->
+<!-- dropdown for users to choose which options -->
 <select name ="carian">
 <option value="all">All</option>
 <option value="book_id">Book ID</option>
@@ -97,7 +97,7 @@ if (isset($_POST['cari']) && !empty($_POST['i_carian']) )
 //based on what users have choose from the dropdown options...
 switch ($_POST["carian"])
 {
-	case "all":
+	case "all": //if users choose option all
 		$query = "SELECT * FROM book 
 		WHERE book_id LIKE '%$_POST[i_carian]%' 
 		OR book_title LIKE '$_POST[i_carian]'
@@ -142,7 +142,6 @@ switch ($_POST["carian"])
 }
 } else{
 //Display whole table from database if user doesn't search
-
 $query = "SELECT * FROM book";
 }
 
@@ -150,7 +149,7 @@ $mysql = $query;
 $result = mysqli_query($conn, $mysql) or die(mysql_error());
 
 if (mysqli_num_rows($result) > 0) {
-//table untuk paparan data
+//table to display searching result
 echo "<table border='1'>";
 echo "<col width='80'>"; //book id
 echo "<col width='210'>"; //title
@@ -181,7 +180,7 @@ echo "<th>Edit</th>";
 echo "<th>Delete</th>";
 echo "</tr>";
 
-//Display result from searching
+//Display result from searching from database
 while($row = mysqli_fetch_assoc($result)) {
 	echo "<tr>";
 	echo "<td>".$row['book_id']."</td>"; //attribute names from database

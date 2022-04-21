@@ -85,7 +85,7 @@ else {
 ?>
 
 <?php
-
+//to display details 
 if (isset($_GET['updateid'])){
   $id = $_GET['updateid'];
   $query = "SELECT * FROM book WHERE book_id = $id";
@@ -106,12 +106,13 @@ if (isset($_GET['updateid'])){
 <div id="title"><p>Library Read 2gether<p>Update Book Details</div>
 
 <form method="POST">
+<!--applying css to the table-->
 <div class="container center">
 <div style="display: flex">
 <div style="margin-left: 400px;">
 <div style="width: 600px;">
 <div class="book-contents" style="border: 1px #000 solid; border-radius: 20px;  padding: 30px">
-
+<!--Creating table for users to update borrow-->
 <table cellpadding=6px>
 <tr>
 <td></td>

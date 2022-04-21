@@ -53,28 +53,28 @@ table {
 include ('db_conn.php');
 include ("header.html");
 
-
+//if user click on the edit icon
 if(isset($_POST['update'])){
     $id = $_GET['updateid'];
-$book_id=$_POST['i_bookid'];
-$borrow_id=$_POST['i_borrowid'];
-$member_id = $_POST['i_memberid'];
-$book_id=$_POST['i_bookid'];
-$book_title=$_POST['i_booktitle'];
-$date_borrow = $_POST['i_date_borrow'];
-$duedate = $_POST['i_duedate'];
-$borrow_status = $_POST['i_borrow_status'];
-$date_return = $_POST['i_date_return'];
+	$book_id=$_POST['i_bookid'];
+	$borrow_id=$_POST['i_borrowid'];
+	$member_id = $_POST['i_memberid'];
+	$book_id=$_POST['i_bookid'];
+	$book_title=$_POST['i_booktitle'];
+	$date_borrow = $_POST['i_date_borrow'];
+	$duedate = $_POST['i_duedate'];
+	$borrow_status = $_POST['i_borrow_status'];
+	$date_return = $_POST['i_date_return'];
 
 
-//Simpan data dalam DB
+//update data base on input of users
 $mysql = "UPDATE borrowdetails, borrow SET borrow.date_borrow='$date_borrow', borrow.due_date='$duedate', borrowdetails.borrow_status='$borrow_status', borrowdetails.date_return='$date_return',  borrow.member_id='$member_id' WHERE borrowdetails.borrow_id=$id AND borrow.borrow_id=$id";
 if (mysqli_query($conn, $mysql)) {
-	//papar javascript alert jika pengguna baru berjaya daftar
+	//Display pop-up box that the user has updated successfully 
 	echo '<script type="text/javascript">;
 	alert("Updated Successfully!");
 		 window.location.href="borrow.php";</script>';
-		 //selepas berjaya daftar, kembali ke login page
+		 //after succesfully register new user, wil redirect back to book.php page
 		 
 } 
 else {
@@ -104,19 +104,16 @@ WHERE book.book_id = borrowdetails.book_id AND borrow.borrow_id = borrowdetails.
 }
 ?>
 
-
-
-
-
 <div id="title"><p>Library Read 2gether<p>Update Borrow Details</div>
 
 <form method="POST">
+<!--applying css to the table-->
 <div class="container center">
 <div style="display: flex">
 <div style="margin-left: 400px;">
 <div style="width: 600px;">
 <div class="book-contents" style="border: 1px #000 solid; border-radius: 20px;  padding: 30px">
-
+<!--Creating table for users to update borrow-->
 <table cellpadding=6px>
 <tr>
 <td></td>

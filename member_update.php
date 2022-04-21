@@ -51,8 +51,10 @@ table {
 <?php
 //Connect to database
 include ('db_conn.php');
+//link to header
 include ("header.html");
 
+//if user click on the edit icon
 if(isset($_POST['update'])){
   $id = $_GET['updateid'];
 $firstname =$_POST['i_firstname'];
@@ -64,14 +66,14 @@ $type_id =$_POST['i_typeid'];
 $year_level =$_POST['i_yearlevel'];
 $status =$_POST['i_status'];
 
-
+//Update data in the table
 $mysql = "UPDATE member SET firstname='$firstname', lastname='$lastname', gender='$gender', address='$address', contact='$contact', type_id='$type_id', year_level='$year_level', status='$status' WHERE member_id= $id";
 if (mysqli_query($conn, $mysql)) {
-  //papar javascript alert jika pengguna baru berjaya daftar
+  //Display pop-up box that the user has updated successfully 
   echo '<script type="text/javascript">;
   alert("Updated Successfully!");
      window.location.href="member.php";</script>';
-     //selepas berjaya daftar, kembali ke login page
+     //after succesfully register new user, wil redirect back to book.php page
      
 } 
 else {
@@ -81,6 +83,7 @@ else {
 ?>
 
 <?php
+//to display details 
 if (isset($_GET['updateid'])){
   $id = $_GET['updateid'];
   $query = "SELECT * FROM member WHERE member_id = $id";
@@ -102,12 +105,15 @@ if (isset($_GET['updateid'])){
 
 <div id="title"><p>Library Read 2gether<p>Update Member Details</div>
 <form method="POST">
+
+<!--applying css to the table-->
 <div class="container center">
 <div style="display: flex">
 <div style="margin-left: 400px;">
 <div style="width: 600px;">
 <div class="book-contents" style="border: 1px #000 solid; border-radius: 20px;  padding: 30px">
 
+<!--Creating table for users to update member-->
 <table cellpadding=6px>
 <tr>
 <td></td>

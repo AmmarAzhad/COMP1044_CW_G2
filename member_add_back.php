@@ -2,7 +2,7 @@
 //Connect to Database
 include ('db_conn.php');
 
-/*Dapatkan data dari semua medan/textfield pada borang_penggunabaru.php*/
+//get user inputs from book.php page to add book
 $member_id = $_POST['i_member_id'];
 $firstname=$_POST['i_firstname'];
 $lastname =$_POST['i_lastname'];
