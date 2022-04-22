@@ -38,8 +38,8 @@ include ('header.html');
 <select name ="carian">
 <option>All</option>
 <option value="borrow_id">Borrow ID</option>
-<option value="book_id">Book ID</option>
 <option value="member_id">Member ID</option>
+<option value="book_id">Book ID</option>
 <option value="book_title">Title</option>
 <option value="borrow_status">Borrow Status</option>
 </select>
@@ -58,24 +58,29 @@ if (isset($_POST['cari']) && !empty($_POST['i_carian']) )
 switch ($_POST["carian"])
 {
 case "borrow_id": //if users choose option borrow id
-$query = "SELECT * FROM borrow, borrowdetails
-WHERE borrow_id LIKE '%$_POST[i_carian]%'";
+$query = "SELECT borrow.borrow_id, borrow.member_id, borrowdetails.book_id, book.book_title, borrow.date_borrow, borrow.due_date, borrowdetails.borrow_status, borrowdetails.date_return
+FROM book, borrow, borrowdetails
+WHERE book.book_id = borrowdetails.book_id AND borrow.borrow_id = borrowdetails.borrow_id AND borrow.borrow_id LIKE '%$_POST[i_carian]%'";
 break;
 case "book_id": //if users choose option book id
-$query = "SELECT * FROM book, borrowdetails
-WHERE book_id LIKE '%$_POST[i_carian]%'";
+$query = "SELECT borrow.borrow_id, borrow.member_id, borrowdetails.book_id, book.book_title, borrow.date_borrow, borrow.due_date, borrowdetails.borrow_status, borrowdetails.date_return
+FROM book, borrow, borrowdetails
+WHERE book.book_id = borrowdetails.book_id AND borrow.borrow_id = borrowdetails.borrow_id AND book.book_id LIKE '%$_POST[i_carian]%'";
 break;
 case "member_id": //jika user pilih search by nama
-$query = "SELECT * FROM member, borrow
-WHERE member_id LIKE '%$_POST[i_carian]%'";
+$query = "SELECT borrow.borrow_id, borrow.member_id, borrowdetails.book_id, book.book_title, borrow.date_borrow, borrow.due_date, borrowdetails.borrow_status, borrowdetails.date_return
+FROM book, borrow, borrowdetails
+WHERE book.book_id = borrowdetails.book_id AND borrow.borrow_id = borrowdetails.borrow_id AND member.member_id LIKE '%$_POST[i_carian]%'";
 break;
 case "book_title"://if users choose option book title
-$query = "SELECT * FROM book
-WHERE book_title LIKE '$_POST[i_carian]'";
+$query = "SELECT borrow.borrow_id, borrow.member_id, borrowdetails.book_id, book.book_title, borrow.date_borrow, borrow.due_date, borrowdetails.borrow_status, borrowdetails.date_return
+FROM book, borrow, borrowdetails
+WHERE book.book_id = borrowdetails.book_id AND borrow.borrow_id = borrowdetails.borrow_id AND book.book_title LIKE '$_POST[i_carian]'";
 break;
 case "borrow_status": //if users choose option borrow status
-$query = "SELECT * FROM book, borrowdetails
-WHERE borrow_status = '$_POST[i_carian]'";
+$query = "SELECT borrow.borrow_id, borrow.member_id, borrowdetails.book_id, book.book_title, borrow.date_borrow, borrow.due_date, borrowdetails.borrow_status, borrowdetails.date_return
+FROM book, borrow, borrowdetails
+WHERE book.book_id = borrowdetails.book_id AND borrow.borrow_id = borrowdetails.borrow_id AND borrowdetails.borrow_status = '$_POST[i_carian]'";
 break;
 
 }

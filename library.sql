@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2022 at 10:22 AM
+-- Generation Time: Apr 22, 2022 at 12:17 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `library`
+-- Database: `libraryy`
 --
 
 -- --------------------------------------------------------
@@ -31,11 +31,11 @@ CREATE TABLE `book` (
   `book_id` int(5) NOT NULL,
   `book_title` varchar(255) NOT NULL,
   `category_id` int(2) NOT NULL,
-  `author` varchar(255) NOT NULL,
+  `author` varchar(255) DEFAULT NULL,
   `book_copies` int(5) NOT NULL,
   `book_pub` varchar(255) DEFAULT NULL,
   `publisher_name` varchar(255) DEFAULT NULL,
-  `isbn` varchar(20) NOT NULL,
+  `isbn` varchar(20) DEFAULT NULL,
   `copyright_year` year(4) DEFAULT NULL,
   `date_added` datetime NOT NULL,
   `status` varchar(10) NOT NULL
@@ -46,24 +46,24 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`book_id`, `book_title`, `category_id`, `author`, `book_copies`, `book_pub`, `publisher_name`, `isbn`, `copyright_year`, `date_added`, `status`) VALUES
-(15, 'Natural Resources', 8, 'Robin Kerrod', 15, 'Marshall Cavendish Corporation', 'Marshall', '1-85435-628-3', 1997, '2013-12-11 06:34:27', 'New'),
-(16, 'Encyclopedia Americana', 5, 'Grolier', 20, 'Grolier Incorporation', 'Connecticut', '0-7172-0119-8', 1988, '2013-12-11 06:36:23', 'Archive'),
-(17, 'Algebra 1', 3, 'Carolyn Bradshaw, Michael Seals', 35, 'Pearson Education, Inc', 'Prentice Hall, New Jersey', '0-13-125087-6', 2004, '2013-12-11 06:39:17', 'Damage'),
-(18, 'The Philippine Daily Inquirer', 7, '..', 3, 'Pasay City', '..', '..', 2013, '2013-12-11 06:41:53', 'New'),
-(19, 'Science in our World', 4, 'Brian Knapp', 25, 'Regency Publishing Group', 'Prentice Hall, Inc', '0-13-050841-1', 1996, '2013-12-11 06:44:44', 'Lost'),
-(20, 'Literature', 9, 'Greg Glowka', 20, 'Regency Publishing Group', 'Prentice Hall, Inc', '0-13-050841-2', 2001, '2013-12-11 06:47:44', 'Old'),
-(21, 'Lexicon Universal Encyclopedia', 5, 'Lexicon', 10, 'Lexicon Publication', 'Pulication Inc., Lexicon', '0-7172-2043-5', 1993, '2013-12-11 06:49:53', 'Old'),
-(22, 'Science and Invention Encyclopedia', 5, 'Clarke Donald, Dartford Mark', 16, 'H.S. Stuttman inc. Publishing', 'Publisher , Westport Connecticut', '0-87475-450-x', 1992, '2013-12-11 06:52:58', 'New'),
-(23, 'Integrated Science Textbook ', 4, 'Merde C. Tan', 15, 'Vibal Publishing House Inc.', '12536. Araneta Avenue Corner Ma. Clara St., Quezon City', '971-570-124-8', 2009, '2013-12-11 06:55:27', 'New'),
-(24, 'Algebra 2', 3, 'Glencoe McGraw Hill', 15, 'The McGrawHill Companies Inc.', 'McGrawhill', '978-0-07-873830-2', 2008, '2013-12-11 06:57:35', 'New'),
-(25, 'Wiki at Panitikan ', 7, 'Lorenza P. Avera', 28, 'JGM & S Corporation', 'JGM & S Corporation', '971-07-1574-7', 2000, '2013-12-11 06:59:24', 'Damage'),
-(26, 'English Expressways TextBook for 4th year', 9, 'Virginia Bermudez Ed. O. et al', 23, 'SD Publications, Inc.', 'Gregorio Araneta Avenue, Quezon City', '978-971-0315-33-8', 2007, '2013-12-11 07:01:25', 'New'),
-(27, 'Asya Pag-usbong Ng Kabihasnan ', 8, 'Ricardo T. Jose, Ph . D.', 21, 'Vibal Publishing House Inc.', 'Araneta Avenue . Cor. Maria Clara St., Quezon City', '971-07-2324-3', 2008, '2013-12-11 07:02:56', 'New'),
-(28, 'Literature (the readers choice)', 9, 'Glencoe McGraw Hill', 20, 'the McGrawHill Companies Inc', '..', '0-02-817934-x', 2001, '2013-12-11 07:05:25', 'Damage'),
-(29, 'Beloved a Novel', 9, 'Toni Morrison', 13, 'Alfred A. Knoff, Inc', '..', '0-394-53597-9', 1987, '2013-12-11 07:07:02', 'Old'),
+(15, 'Natural Resources', 8, 'Robin Kerrod', 15, 'Marshall Cavendish Corporation', 'Marshall', '1-85435-628-3', 1997, '2013-12-11 06:34:00', 'New'),
+(16, 'Encyclopedia Americana', 5, 'Grolier', 20, 'Connecticut', 'Grolier Incorporation ', '0-7172-0119-8', 1988, '2013-12-11 06:36:00', 'Archive'),
+(17, 'Algebra 1', 3, 'Carolyn Bradshaw, Michael Seals', 35, 'Pearson Education, Inc', 'Prentice Hall, New Jersey', '0-13-125087-6', 2004, '2013-12-11 06:39:00', 'Damage'),
+(18, 'The Philippine Daily Inquirer', 7, '..', 3, 'Pasay City', '..', '..', 2013, '2013-12-11 06:41:00', 'New'),
+(19, 'Science in our World', 4, 'Brian Knapp', 25, 'Regency Publishing Group', 'Prentice Hall, Inc', '0-13-050841-1', 1996, '2013-12-11 06:44:00', 'Lost'),
+(20, 'Literature', 9, 'Greg Glowka', 20, 'Regency Publishing Group', 'Prentice Hall, Inc', '0-13-050841-2', 2001, '2013-12-11 06:47:00', 'Old'),
+(21, 'Lexicon Universal Encyclopedia', 5, 'Lexicon', 10, 'Lexicon Publication', 'Pulication Inc., Lexicon', '0-7172-2043-5', 1993, '2013-12-11 06:49:00', 'Old'),
+(22, 'Science and Invention Encyclopedia', 5, 'Clarke Donald, Dartford Mark', 16, 'H.S. Stuttman inc. Publishing', 'Publisher , Westport Connecticut', '0-87475-450-x', 1992, '2013-12-11 06:52:00', 'New'),
+(23, 'Integrated Science Textbook ', 4, 'Merde C. Tan', 15, 'Vibal Publishing House Inc.', '12536. Araneta Avenue Corner Ma. Clara St., Quezon City', '971-570-124-8', 2009, '2013-12-11 06:55:00', 'New'),
+(24, 'Algebra 2', 3, 'Glencoe McGraw Hill', 15, 'The McGrawHill Companies Inc.', 'McGrawhill', '978-0-07-873830-2', 2008, '2013-12-11 06:57:00', 'New'),
+(25, 'Wiki at Panitikan ', 7, 'Lorenza P. Avera', 28, 'JGM & S Corporation', 'JGM & S Corporation', '971-07-1574-7', 2000, '2013-12-11 06:59:00', 'Damage'),
+(26, 'English Expressways TextBook for 4th year', 9, 'Virginia Bermudez Ed. O. et al', 23, 'SD Publications, Inc.', 'Gregorio Araneta Avenue, Quezon City', '978-971-0315-33-8', 2007, '2013-12-11 07:01:00', 'New'),
+(27, 'Asya Pag-usbong Ng Kabihasnan ', 8, 'Ricardo T. Jose, Ph . D.', 21, 'Vibal Publishing House Inc.', 'Araneta Avenue . Cor. Maria Clara St., Quezon City', '971-07-2324-3', 2008, '2013-12-11 07:02:00', 'New'),
+(28, 'Literature (the readers choice)', 9, 'Glencoe McGraw Hill', 20, '', 'the McGrawHill Companies Inc', '0-02-817934-x', 2001, '2013-12-11 07:05:00', 'Damage'),
+(29, 'Beloved a Novel', 9, 'Toni Morrison', 13, '', 'Alfred A. Knoff, Inc', '0-394-53597-9', 1987, '2013-12-11 07:07:00', 'Old'),
 (30, 'Silver Burdett Engish', 2, 'Judy Brim', 12, 'Silver Burdett Company', 'Silver', '0-382-03575-5', 1985, '2013-12-11 09:22:50', 'Old'),
-(31, 'The Corporate Warriors (Six Classic Cases in American Business)', 8, 'Douglas K. Ramsey', 8, 'Houghton Miffin Company', '..', '0-395-35487-0', 1987, '2013-12-11 09:25:32', 'Old'),
-(32, 'Introduction to Information System', 9, 'Cristine Redoblo', 10, 'CHMSC', 'Brian INC', '123-132', 2013, '2014-01-17 19:00:10', 'New');
+(31, 'The Corporate Warriors (Six Classic Cases in American Business)', 8, 'Douglas K. Ramsey', 8, 'Houghton Miffin Company', '..', '0-395-35487-0', 1987, '2013-12-11 09:25:00', 'Old'),
+(32, 'Introduction to Information System', 9, 'Cristine Redoblo', 10, 'CHMSC', 'Brian INC', '123-132', 2013, '2014-01-17 19:00:00', 'New');
 
 -- --------------------------------------------------------
 
@@ -83,9 +83,9 @@ CREATE TABLE `borrow` (
 --
 
 INSERT INTO `borrow` (`borrow_id`, `member_id`, `date_borrow`, `due_date`) VALUES
-(482, 52, '2014-03-20 23:38:22', '2014-03-01'),
-(483, 55, '2014-03-20 23:49:34', '2014-03-21'),
-(484, 55, '2014-03-20 23:50:27', '2014-03-21');
+(482, 52, '2014-03-20 23:38:00', '2014-03-01'),
+(483, 55, '2014-03-20 23:49:00', '2014-03-21'),
+(484, 55, '2014-03-20 23:50:00', '2014-03-21');
 
 -- --------------------------------------------------------
 
@@ -107,7 +107,7 @@ CREATE TABLE `borrowdetails` (
 
 INSERT INTO `borrowdetails` (`borrow_details_id`, `book_id`, `borrow_id`, `borrow_status`, `date_return`) VALUES
 (162, 15, 482, 'pending', '0000-00-00 00:00:00'),
-(163, 15, 483, 'returned', '2014-03-21 00:30:51'),
+(163, 15, 483, 'returned', '2014-03-21 00:30:00'),
 (164, 16, 484, 'pending', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
@@ -148,7 +148,7 @@ CREATE TABLE `member` (
   `lastname` varchar(20) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `address` varchar(20) DEFAULT NULL,
-  `contact` int(10) DEFAULT NULL,
+  `contact` varchar(11) DEFAULT NULL,
   `type_id` varchar(20) NOT NULL,
   `year_level` varchar(20) DEFAULT NULL,
   `status` varchar(20) NOT NULL
@@ -159,19 +159,19 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`member_id`, `firstname`, `lastname`, `gender`, `address`, `contact`, `type_id`, `year_level`, `status`) VALUES
-(52, 'Mark', 'Sanchez', 'Male', 'Talisay', 212010, '2', 'Faculty', 'Active'),
-(53, 'April Joy', 'Aguilar', 'Female', 'E.B. Magalona', 0, '22', 'Second Year', 'Banned'),
-(54, 'Alfonso', 'Pancho', 'Male', 'E.B. Magalona', 9, '22', 'First Year', 'Active'),
-(55, 'Jonathan ', 'Antanilla', 'Male', 'E.B. Magalona', 32, '22', 'Fourth Year', 'Active'),
-(56, 'Renzo Bryan', 'Pedroso', 'Male', 'Silay City', 3030, '22', 'Third Year', 'Active'),
-(57, 'Eleazar', 'Duterte', 'Male', 'E.B. Magalona', 90902, '22', 'Second Year', 'Active'),
-(58, 'Ellen Mae', 'Espino', 'Female', 'E.B. Magalona', 123, '22', 'First Year', 'Active'),
-(59, 'Ruth', 'Magbanua', 'Female', 'E.B. Magalona', 9340, '22', 'Second Year', 'Active'),
-(60, 'Shaina Marie', 'Gabino', 'Female', 'Silay City', 132134, '22', 'Second Year', 'Active'),
-(62, 'Chairty Joy', 'Punzalan', 'Female', 'E.B. Magalona', 12423, '2', 'Faculty', 'Active'),
-(63, 'Kristine May', 'Dela Rosa', 'Female', 'Silay City', 1321, '22', 'Second Year', 'Active'),
-(64, 'Chinie marie', 'Laborosa', 'Female', 'E.B. Magalona', 902101, '22', 'Second Year', 'Active'),
-(65, 'Ruby', 'Morante', 'Female', 'E.B. Magalona', 0, '2', 'Faculty', 'Active');
+(52, 'Mark', 'Sanchez', 'Male', 'Talisay', NULL, '2', 'Faculty', 'Active'),
+(53, 'April Joy', 'Aguilar', 'Female', 'E.B. Magalona', NULL, '22', 'Second Year', 'Banned'),
+(54, 'Alfonso', 'Pancho', 'Male', 'E.B. Magalona', NULL, '22', 'First Year', 'Active'),
+(55, 'Jonathan ', 'Antanilla', 'Male', 'E.B. Magalona', NULL, '22', 'Fourth Year', 'Active'),
+(56, 'Renzo Bryan', 'Pedroso', 'Male', 'Silay City', NULL, '22', 'Third Year', 'Active'),
+(57, 'Eleazar', 'Duterte', 'Male', 'E.B. Magalona', NULL, '22', 'Second Year', 'Active'),
+(58, 'Ellen Mae', 'Espino', 'Female', 'E.B. Magalona', NULL, '22', 'First Year', 'Active'),
+(59, 'Ruth', 'Magbanua', 'Female', 'E.B. Magalona', NULL, '22', 'Second Year', 'Active'),
+(60, 'Shaina Marie', 'Gabino', 'Female', 'Silay City', NULL, '22', 'Second Year', 'Active'),
+(62, 'Chairty Joy', 'Punzalan', 'Female', 'E.B. Magalona', NULL, '2', 'Faculty', 'Active'),
+(63, 'Kristine May', 'Dela Rosa', 'Female', 'Silay City', NULL, '22', 'Second Year', 'Active'),
+(64, 'Chinie marie', 'Laborosa', 'Female', 'E.B. Magalona', NULL, '22', 'Second Year', 'Active'),
+(65, 'Ruby', 'Morante', 'Female', 'E.B. Magalona', NULL, '2', 'Faculty', 'Active');
 
 -- --------------------------------------------------------
 
@@ -214,8 +214,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `firstname`, `lastname`) VALUES
-(2, 'admin', 'admin', 'john', 'smith'),
-(3, '', 'd41d8cd98f00b204e9800998ecf8427e', '', '');
+(2, 'admin', 'admin', 'john', 'smith');
 
 --
 -- Indexes for dumped tables
@@ -267,11 +266,18 @@ ALTER TABLE `type`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `book`
+--
+ALTER TABLE `book`
+  MODIFY `book_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `borrow`
