@@ -167,7 +167,7 @@ echo "<col width='50'>"; //delete
 echo "<tr style='height: 50px; background: #ddd;'>"; //apply style to head of columns 
 echo "<th>Book ID</th>";
 echo "<th>Title</th>";
-echo "<th>Category ID</th>";
+echo "<th>Category</th>";
 echo "<th>Author</th>";
 echo "<th>Book Copies</th>";
 echo "<th>Book Publisher Company</th>";
@@ -182,10 +182,13 @@ echo "</tr>";
 
 //Display result from searching from database
 while($row = mysqli_fetch_assoc($result)) {
+	$category =  "SELECT * FROM category WHERE category_id = $row[category_id]";
+	$categoryResult = mysqli_query($conn, $category) or die(mysql_error());
+	$cat = mysqli_fetch_assoc($categoryResult);
 	echo "<tr>";
 	echo "<td>".$row['book_id']."</td>"; //attribute names from database
 	echo "<td>".$row['book_title']."</td>";
-	echo "<td>".$row['category_id']."</td>";
+	echo "<td>".$cat['classname']."</td>";
 	echo "<td>".$row['author']."</td>";
 	echo "<td>".$row['book_copies']."</td>";
 	echo "<td>".$row['book_pub']."</td>";

@@ -57,7 +57,7 @@ include ("header.html");
 //if user click on the edit icon
 if(isset($_POST['update'])){
 	
-    $id = $_GET['updateid'];
+  $id = $_GET['updateid'];
 	$book_title=$_POST['i_booktitle'];
 	$author =$_POST['i_author'];
 	$book_copies =$_POST['i_bookcopies'];
