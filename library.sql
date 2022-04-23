@@ -59,8 +59,8 @@ INSERT INTO `book` (`book_id`, `book_title`, `category_id`, `author`, `book_copi
 (25, 'Wiki at Panitikan ', 7, 'Lorenza P. Avera', 28, 'JGM & S Corporation', 'JGM & S Corporation', '971-07-1574-7', 2000, '2013-12-11 06:59:00', 'Damage'),
 (26, 'English Expressways TextBook for 4th year', 9, 'Virginia Bermudez Ed. O. et al', 23, 'SD Publications, Inc.', 'Gregorio Araneta Avenue, Quezon City', '978-971-0315-33-8', 2007, '2013-12-11 07:01:00', 'New'),
 (27, 'Asya Pag-usbong Ng Kabihasnan ', 8, 'Ricardo T. Jose, Ph . D.', 21, 'Vibal Publishing House Inc.', 'Araneta Avenue . Cor. Maria Clara St., Quezon City', '971-07-2324-3', 2008, '2013-12-11 07:02:00', 'New'),
-(28, 'Literature (the readers choice)', 9, 'Glencoe McGraw Hill', 20, '', 'the McGrawHill Companies Inc', '0-02-817934-x', 2001, '2013-12-11 07:05:00', 'Damage'),
-(29, 'Beloved a Novel', 9, 'Toni Morrison', 13, '', 'Alfred A. Knoff, Inc', '0-394-53597-9', 1987, '2013-12-11 07:07:00', 'Old'),
+(28, 'Literature (the readers choice)', 9, 'Glencoe McGraw Hill', 20, 'the McGrawHill Companies Inc', '', '0-02-817934-x', 2001, '2013-12-11 07:05:00', 'Damage'),
+(29, 'Beloved a Novel', 9, 'Toni Morrison', 13, 'Alfred A. Knoff, Inc', '', '0-394-53597-9', 1987, '2013-12-11 07:07:00', 'Old'),
 (30, 'Silver Burdett Engish', 2, 'Judy Brim', 12, 'Silver Burdett Company', 'Silver', '0-382-03575-5', 1985, '2013-12-11 09:22:50', 'Old'),
 (31, 'The Corporate Warriors (Six Classic Cases in American Business)', 8, 'Douglas K. Ramsey', 8, 'Houghton Miffin Company', '..', '0-395-35487-0', 1987, '2013-12-11 09:25:00', 'Old'),
 (32, 'Introduction to Information System', 9, 'Cristine Redoblo', 10, 'CHMSC', 'Brian INC', '123-132', 2013, '2014-01-17 19:00:00', 'New');
