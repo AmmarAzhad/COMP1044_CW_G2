@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2022 at 12:17 PM
+-- Generation Time: Apr 24, 2022 at 05:17 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `libraryy`
+-- Database: `library`
 --
 
 -- --------------------------------------------------------
@@ -59,8 +59,8 @@ INSERT INTO `book` (`book_id`, `book_title`, `category_id`, `author`, `book_copi
 (25, 'Wiki at Panitikan ', 7, 'Lorenza P. Avera', 28, 'JGM & S Corporation', 'JGM & S Corporation', '971-07-1574-7', 2000, '2013-12-11 06:59:00', 'Damage'),
 (26, 'English Expressways TextBook for 4th year', 9, 'Virginia Bermudez Ed. O. et al', 23, 'SD Publications, Inc.', 'Gregorio Araneta Avenue, Quezon City', '978-971-0315-33-8', 2007, '2013-12-11 07:01:00', 'New'),
 (27, 'Asya Pag-usbong Ng Kabihasnan ', 8, 'Ricardo T. Jose, Ph . D.', 21, 'Vibal Publishing House Inc.', 'Araneta Avenue . Cor. Maria Clara St., Quezon City', '971-07-2324-3', 2008, '2013-12-11 07:02:00', 'New'),
-(28, 'Literature (the readers choice)', 9, 'Glencoe McGraw Hill', 20, 'the McGrawHill Companies Inc', '', '0-02-817934-x', 2001, '2013-12-11 07:05:00', 'Damage'),
-(29, 'Beloved a Novel', 9, 'Toni Morrison', 13, 'Alfred A. Knoff, Inc', '', '0-394-53597-9', 1987, '2013-12-11 07:07:00', 'Old'),
+(28, 'Literature (the readers choice)', 9, 'Glencoe McGraw Hill', 20, '', 'the McGrawHill Companies Inc', '0-02-817934-x', 2001, '2013-12-11 07:05:00', 'Damage'),
+(29, 'Beloved a Novel', 9, 'Toni Morrison', 13, '', 'Alfred A. Knoff, Inc', '0-394-53597-9', 1987, '2013-12-11 07:07:00', 'Old'),
 (30, 'Silver Burdett Engish', 2, 'Judy Brim', 12, 'Silver Burdett Company', 'Silver', '0-382-03575-5', 1985, '2013-12-11 09:22:50', 'Old'),
 (31, 'The Corporate Warriors (Six Classic Cases in American Business)', 8, 'Douglas K. Ramsey', 8, 'Houghton Miffin Company', '..', '0-395-35487-0', 1987, '2013-12-11 09:25:00', 'Old'),
 (32, 'Introduction to Information System', 9, 'Cristine Redoblo', 10, 'CHMSC', 'Brian INC', '123-132', 2013, '2014-01-17 19:00:00', 'New');
@@ -83,7 +83,7 @@ CREATE TABLE `borrow` (
 --
 
 INSERT INTO `borrow` (`borrow_id`, `member_id`, `date_borrow`, `due_date`) VALUES
-(482, 52, '2014-03-20 23:38:00', '2014-03-01'),
+(482, 52, '2014-03-20 23:38:00', '2014-03-21'),
 (483, 55, '2014-03-20 23:49:00', '2014-03-21'),
 (484, 55, '2014-03-20 23:50:00', '2014-03-21');
 
@@ -214,7 +214,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `firstname`, `lastname`) VALUES
-(2, 'admin', 'admin', 'john', 'smith');
+(4, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'john', 'smith');
 
 --
 -- Indexes for dumped tables
@@ -313,7 +313,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
