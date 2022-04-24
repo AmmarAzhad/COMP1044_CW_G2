@@ -21,7 +21,7 @@ if (mysqli_query($conn, $mysql)) {
 	//Display pop-up box that the user has recorded successfully
 	echo '<script type="text/javascript">;
 	alert("Book Recorded Successfully!");
-		 window.location.href="book_add.php";</script>';
+		 window.location.href="book.php";</script>';
 		 //after succesfully register new user, wil redirect back to book.php page
 		 
 } 

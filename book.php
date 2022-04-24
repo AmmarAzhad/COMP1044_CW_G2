@@ -278,7 +278,7 @@ else { echo "<center>No Records</center>";}
 <tr>
 <td></td>
 <td>Publisher Name :</td>
-<td><input type="text" placeholder="0174371312" name="'i_pubname"></td>
+<td><input type="text" placeholder="0174371312" name="i_pubname"></td>
 <td></td>
 </tr>
 <tr>

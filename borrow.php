@@ -48,7 +48,6 @@ include ('header.html');
 <!-- user key-in keywords they want to find -->
 <input type="text" name="i_carian">
 <button name="cari">Search</button>
-<button name="borrow"><a href="borrow_new.php" style="color:white">Borrow</a></button>
 </p><center>
 </form>
 
