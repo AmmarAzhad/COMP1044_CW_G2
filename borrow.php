@@ -22,7 +22,6 @@ table {
 }
 
 </style>
-
 </head>
 <body>
 <?php
@@ -37,7 +36,7 @@ include ('header.html');
 <p><center>
 <!-- dropdown for users to choose which opotions -->
 <select name ="carian">
-<option>All</option>
+<option value="all">All</option>
 <option value="borrow_id">Borrow ID</option>
 <option value="member_id">Member ID</option>
 <option value="book_id">Book ID</option>
@@ -58,6 +57,18 @@ if (isset($_POST['cari']) && !empty($_POST['i_carian']) )
 //based on what users have choose from the dropdown options...
 switch ($_POST["carian"])
 {
+
+case "all":
+$query = "SELECT borrow.borrow_id, borrow.member_id, borrowdetails.book_id, book.book_title, borrow.date_borrow, borrow.due_date, borrowdetails.borrow_status, borrowdetails.date_return
+FROM book, borrow, borrowdetails, member
+WHERE book.book_id = borrowdetails.book_id AND borrow.borrow_id = borrowdetails.borrow_id  AND borrow.member_id = member.member_id 
+AND (borrow.borrow_id LIKE '%$_POST[i_carian]%' 
+	OR book.book_id LIKE '%$_POST[i_carian]%' 
+	OR member.member_id LIKE '%$_POST[i_carian]%' 
+	OR book.book_title LIKE '$_POST[i_carian]'
+	OR borrowdetails.borrow_status = '$_POST[i_carian]')";
+break;
+
 case "borrow_id": //if users choose option borrow id
 $query = "SELECT borrow.borrow_id, borrow.member_id, borrowdetails.book_id, book.book_title, borrow.date_borrow, borrow.due_date, borrowdetails.borrow_status, borrowdetails.date_return
 FROM book, borrow, borrowdetails
@@ -70,13 +81,13 @@ WHERE book.book_id = borrowdetails.book_id AND borrow.borrow_id = borrowdetails.
 break;
 case "member_id": //jika user pilih search by nama
 $query = "SELECT borrow.borrow_id, borrow.member_id, borrowdetails.book_id, book.book_title, borrow.date_borrow, borrow.due_date, borrowdetails.borrow_status, borrowdetails.date_return
-FROM book, borrow, borrowdetails
-WHERE book.book_id = borrowdetails.book_id AND borrow.borrow_id = borrowdetails.borrow_id AND member.member_id LIKE '%$_POST[i_carian]%'";
+FROM book, borrow, borrowdetails,member
+WHERE book.book_id = borrowdetails.book_id AND borrow.borrow_id = borrowdetails.borrow_id AND borrow.member_id = member.member_id AND member.member_id LIKE '%$_POST[i_carian]%'";
 break;
 case "book_title"://if users choose option book title
 $query = "SELECT borrow.borrow_id, borrow.member_id, borrowdetails.book_id, book.book_title, borrow.date_borrow, borrow.due_date, borrowdetails.borrow_status, borrowdetails.date_return
 FROM book, borrow, borrowdetails
-WHERE book.book_id = borrowdetails.book_id AND borrow.borrow_id = borrowdetails.borrow_id AND book.book_title LIKE '$_POST[i_carian]'";
+WHERE book.book_id = borrowdetails.book_id AND borrow.borrow_id = borrowdetails.borrow_id AND book.book_title LIKE '%$_POST[i_carian]'";
 break;
 case "borrow_status": //if users choose option borrow status
 $query = "SELECT borrow.borrow_id, borrow.member_id, borrowdetails.book_id, book.book_title, borrow.date_borrow, borrow.due_date, borrowdetails.borrow_status, borrowdetails.date_return
