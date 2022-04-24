@@ -5,7 +5,7 @@ Library Read 2gether is a library system website which can perform add, delete, 
 
 Library Read 2gether is a web front-end to the database using HTML, CSS and Javascript. The web is connected to a database and designed to execute queries using PHP and SQL.
 The queries include :
-* Perform login function from users in the database
+* Perform login function for users in the database
 * Adding a user to the database that works as a register function
 * Adding a book to the database
 * Adding a member to the database
