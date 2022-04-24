@@ -250,14 +250,14 @@ else { echo "<center>No Records</center>";}
 <tr>
 <td></td>
 <td> First Name:</td>
-<td><input type="text" placeholder="Roslyn Ra Vie" name="i_firstname" required></td>
+<td><input type="text" placeholder="Ali" name="i_firstname" required></td>
 <td></td>
 </tr>
 
 <tr>
 <td></td>
 <td>Last Name :</td>
-<td><input type="text" placeholder="021213050312" name="lastname" required></td>
+<td><input type="text" placeholder="Mohammad" name="lastname" required></td>
 <td></td>
 </tr>
 
