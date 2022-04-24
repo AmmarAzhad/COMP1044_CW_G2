@@ -5,7 +5,7 @@
 
 <!-- javascript for creating a pop-up box whether users confirm to log out -->
 <script>
-	function confirmationn() {
+	function logOutConfirmation() {
 		conf = confirm("Are you sure to log out?");
 		if(conf == false){
 			document.getElementById("logoutbtn").href = "main_page.php";
@@ -33,7 +33,7 @@ head{
 					<li><a href="borrow.php" id="menu-items">Borrow</a></li>
 					<li><a href="book.php" id="menu-items">Books</a></li>
 					<li><a href="member.php" id="menu-items">Members</a></li>
-					<li><a href="login.php" id = 'logoutbtn' onclick='confirmationn()'><p style="color:white; font-family: Tw Cen MT; font-size: 19px; ">Log Out</p></a></li>
+					<li><a href="login.php" id = 'logoutbtn' onclick='logOutConfirmation()'><p style="color:white; font-family: Tw Cen MT; font-size: 19px; ">Log Out</p></a></li>
 				</ul>
 			</nav>
 		</div>

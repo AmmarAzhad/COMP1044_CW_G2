@@ -105,6 +105,7 @@ switch ($_POST["carian"])
 		OR author LIKE '$_POST[i_carian]'
 		OR book_copies LIKE '$_POST[i_carian]'
 		OR book_pub LIKE '$_POST[i_carian]'
+		OR publisher_name LIKE '$_POST[i_carian]'
 		OR isbn = '$_POST[i_carian]'
 		OR date_added LIKE '$_POST[i_carian]'
 		OR status = '$_POST[i_carian]'";

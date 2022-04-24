@@ -183,7 +183,7 @@ echo "<th>Last Name</th>";
 echo "<th>Gender</th>";
 echo "<th>Address</th>";
 echo "<th>Contact</th>";
-echo "<th>Type ID</th>";
+echo "<th>Type</th>";
 echo "<th>Year Level</th>";
 echo "<th>Status</th>";
 echo "<th>Edit</th>";
@@ -192,6 +192,9 @@ echo "</tr>";
 
 //Display result from searching from database
 while($row = mysqli_fetch_assoc($result)) {
+	$type =  "SELECT * FROM type WHERE type_id = $row[type_id]";
+	$typeResult = mysqli_query($conn, $type) or die(mysql_error());
+	$typ = mysqli_fetch_assoc($typeResult);
 	echo "<tr>";
 	echo "<td>".$row['member_id']."</td>"; //attribute names from database
 	echo "<td>".$row['firstname']."</td>";
@@ -199,7 +202,7 @@ while($row = mysqli_fetch_assoc($result)) {
 	echo "<td>".$row['gender']."</td>";
 	echo "<td>".$row['address']."</td>";
 	echo "<td>".$row['contact']."</td>";
-	echo "<td>".$row['type_id']."</td>";
+	echo "<td>".$typ['borrowertype']."</td>";
 	echo "<td>".$row['year_level']."</td>";
 	echo "<td>".$row['status']."</td>";
 	//edit button
